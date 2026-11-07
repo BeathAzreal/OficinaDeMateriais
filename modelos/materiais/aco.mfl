@@ -1,0 +1,13 @@
+# Aço carbono e baixa liga (aço de baixo carbono, galvanizado, SAE 1045).
+#
+# Propriedades médias na faixa de 500 a 800 °C, a que decide o t8/5. Valores
+# típicos para aços nessa faixa: k entre 25 e 35 W/(m·K) e ρ·c entre 4,5 e
+# 5,5 MJ/(m³·K) (MFL, docs/welding.md §1). Com valores de temperatura
+# ambiente os resultados mudam bastante.
+let condutividade = 30 W/(m*K)
+let densidade = 7850 kg/m^3
+let calor_especifico = 640 J/(kg*K)
+
+# Temperaturas que marcam as zonas da junta
+let fusao = 1500 degC            # acima disso, zona fundida
+let inicio_transformacao = 727 degC   # A1: acima disso, zona afetada pelo calor (ZTA)

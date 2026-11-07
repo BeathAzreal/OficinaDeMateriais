@@ -1,0 +1,11 @@
+/* Laudo térmico (MFL), H111 */
+.laudo-termico { max-width: 880px; }
+.laudo-lista li { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: baseline; }
+.laudo-lista li p { grid-column: 1 / -1; }
+.laudo-valor { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.laudo-aviso { margin-top: 0; }
+.laudo-formula { margin-top: 10px; }
+.laudo-formula summary { cursor: pointer; font-weight: 700; }
+.laudo-formula figure { margin: 8px 0; }
+.laudo-formula figcaption { font-size: 0.85rem; color: var(--texto-2); }
+.laudo-formula pre { max-height: 40vh; overflow: auto; margin: 4px 0 0; padding: 8px 10px; background: #0d1014; border: 1px solid var(--borda); border-radius: 8px; font-size: 0.82rem; line-height: 1.35; white-space: pre; }

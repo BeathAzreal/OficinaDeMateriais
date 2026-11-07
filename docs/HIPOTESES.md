@@ -1265,3 +1265,14 @@ Treino → SUBAQUÁTICA. Eletrodo revestido na água (solda molhada), na mesma b
 - **Peças:** cais a 4 m (cordões sobre chapa), casco de balsa a 8 m (remendo sobreposto) e perna de plataforma a 18 m (filete em T, aço com CE 0,44: pede mais calor ou revenimento).
 - **Testes:** `tests/subaquatica.test.ts`.
 - Números didáticos, calibrados para o jogo. Não substituem procedimento qualificado de solda molhada (por exemplo, AWS D3.6M) nem treinamento de mergulho.
+
+### H111 — Laudo térmico do MIG/MAG pela MFL (v2.3, Claude)
+
+No resultado do MIG/MAG (Treino e Fábrica), o botão **Laudo térmico (MFL)** calcula, com os modelos de `modelos/soldagem/` rodando na MFL (WebAssembly), o aporte térmico (EN 1011-1, k = 0,8), o regime de escoamento do calor e o t8/5 (EN 1011-2, Anexo D) e as larguras da zona fundida e da ZTA (pico do campo de Rosenthal a 1500 °C e a 727 °C).
+
+- **Entradas:** tensão e corrente do último ajuste usado no passe (`tensaoV`, `correnteA` de `src/modelo/processo.ts`), velocidade média do trecho avaliado (`velocidadeMediaMms`), espessura e material da chapa, peça a 20 °C.
+- **Propriedades do aço** (`modelos/materiais/aco.mfl`): k = 30 W/(m·K), ρ = 7850 kg/m³, c = 640 J/(kg·K), médias da faixa de 500 a 800 °C.
+- **Cobertura:** laudo completo só para aço de baixo carbono, galvanizado e SAE 1045. Inox, alumínio e cobre mostram só o aporte (a EN 1011-2 é para aços ferríticos).
+- **Modo sombra:** não muda a nota nem a aprovação.
+- **Testes:** `tests/laudoTermico.test.ts` reproduz o exemplo de referência da MFL (25 V, 250 A, 5 mm/s, 10 mm: 1 kJ/mm, t8/5 = 11,36 s, ZTA de 3,71 mm) e a fórmula 3-D da EN 1011-2.
+- Modelos analíticos: propriedades constantes, sem perdas, sem chanfro nem metal de adição. Valem para a ZTA, não para a poça.

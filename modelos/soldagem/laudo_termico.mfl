@@ -1,0 +1,49 @@
+# Laudo térmico de um passe MIG/MAG em aço.
+#
+# Entradas que o jogo passa (com unidade):
+#   tensao, corrente, velocidade   (ver aporte.mfl)
+#   espessura                      espessura da chapa (mm)
+#   preaquecimento                 temperatura da peça antes de soldar (K)
+#
+# Modelos analíticos (MFL, módulo welding): valem para a zona afetada pelo
+# calor, longe do arco. Não preveem a poça, a penetração nem a microestrutura.
+import welding
+import "aporte.mfl"
+import "../materiais/aco.mfl"
+
+# 1. Para onde o calor escoa: espessura de transição da EN 1011-2.
+#    Chapa mais fina que ela: o calor escoa pelos lados (2-D, chapa fina).
+#    Mais grossa: escoa também para baixo (3-D, chapa grossa).
+let transicao = welding.en1011_transition(heat_input: aporte, preheat: preaquecimento)
+var chapa_fina = 0
+if espessura < transicao {
+    chapa_fina = 1
+}
+
+# 2. Tempo de resfriamento de 800 a 500 °C (t8/5), EN 1011-2, Anexo D.
+#    Curto: a ZTA tempera e fica dura. Longo: fica macia, mas o grão cresce.
+let t85 = welding.t85_en1011(heat_input: aporte, thickness: espessura, preheat: preaquecimento)
+
+# 3. Até onde o pico de temperatura chega a cada nível (campo de Rosenthal).
+#    Meia-largura da zona fundida: onde o pico chega à fusão.
+#    Borda da ZTA: onde o pico chega ao início da transformação (A1).
+var meia_largura_zf = 0 mm
+var borda_zta = 0 mm
+if chapa_fina == 1 {
+    meia_largura_zf = welding.distance_for_peak_thin(power: potencia, speed: velocidade,
+        thickness: espessura, conductivity: condutividade, density: densidade,
+        specific_heat: calor_especifico, preheat: preaquecimento, temperature: fusao)
+    borda_zta = welding.distance_for_peak_thin(power: potencia, speed: velocidade,
+        thickness: espessura, conductivity: condutividade, density: densidade,
+        specific_heat: calor_especifico, preheat: preaquecimento, temperature: inicio_transformacao)
+} else {
+    meia_largura_zf = welding.distance_for_peak_thick(power: potencia, speed: velocidade,
+        conductivity: condutividade, density: densidade,
+        specific_heat: calor_especifico, preheat: preaquecimento, temperature: fusao)
+    borda_zta = welding.distance_for_peak_thick(power: potencia, speed: velocidade,
+        conductivity: condutividade, density: densidade,
+        specific_heat: calor_especifico, preheat: preaquecimento, temperature: inicio_transformacao)
+}
+
+# Largura da ZTA de cada lado do cordão
+let largura_zta = borda_zta - meia_largura_zf

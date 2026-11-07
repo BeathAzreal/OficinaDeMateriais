@@ -1,0 +1,28 @@
+{
+  "name": "mfl-wasm",
+  "version": "0.4.0-dev",
+  "description": "MFL (Materials & Manufacturing Language) interpreter compiled to WebAssembly",
+  "license": "MIT",
+  "type": "module",
+  "main": "./mfl.cjs",
+  "module": "./mfl.mjs",
+  "types": "./mfl.d.ts",
+  "exports": {
+    ".": {
+      "types": "./mfl.d.ts",
+      "import": "./mfl.mjs",
+      "require": "./mfl.cjs"
+    },
+    "./mfl.wasm": "./mfl.wasm",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "mfl.mjs",
+    "mfl.cjs",
+    "mfl.d.ts",
+    "mfl.wasm",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": "https://github.com/BeathAzreal/MFLanguage"
+}
