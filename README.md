@@ -1,6 +1,6 @@
 # Oficina de Materiais
 
-**[⬇ Baixar para testar (ZIP, 2,6 MB)](https://github.com/BeathAzreal/OficinaDeMateriais/raw/main/download/Oficina-de-Materiais-teste.zip)**
+**[⬇ Baixar para testar (ZIP, 2,4 MB)](https://github.com/BeathAzreal/OficinaDeMateriais/raw/main/download/Oficina-de-Materiais-teste.zip)**
 
 Extraia o ZIP e abra **Oficina de Materiais.html** no Chrome ou Edge. Não
 precisa instalar nada nem ter internet. No celular, abra o mesmo arquivo no
