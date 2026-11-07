@@ -1,0 +1,10 @@
+{
+  "versao": "v24.19.0",
+  "plataforma": "win32",
+  "arquitetura": "x64",
+  "sha256": "3602f2bb1a10f2cbab4c36886218a33c1ab3db87290e73b033c46c77147d0237",
+  "executavel": "https://nodejs.org/download/release/v24.19.0/win-x64/node.exe",
+  "somas": "https://nodejs.org/download/release/v24.19.0/SHASUMS256.txt",
+  "licenca": "node-v24.19.0-LICENSE.txt",
+  "fonteLicenca": "https://raw.githubusercontent.com/nodejs/node/v24.19.0/LICENSE"
+}

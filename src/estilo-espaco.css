@@ -1,0 +1,163 @@
+/*
+ * Espaço em telas baixas (Alpha v1.4, Claude). Carregado por último.
+ * Preparação: em 1280×720 a peça de teste ficava atrás da barra de ações.
+ * Inspeção: controles, abas e conteúdo se sobrepunham. Só redistribui
+ * espaço; não muda cores nem a identidade visual.
+ */
+
+/* ---------------------------------------------------------- preparação */
+.tela-bancada .barra-acoes .erro:empty {
+  display: none;
+}
+.tela-bancada .peca-teste-area {
+  min-height: 150px;
+}
+/* O resumo do passe não empurra a peça para fora: rola por dentro. */
+.tela-bancada .resumo-passe {
+  max-height: 32%;
+  overflow-y: auto;
+}
+
+@media (max-height: 820px) {
+  .tela-bancada .tela-cabecalho {
+    padding-bottom: 4px;
+  }
+  .tela-bancada .tela-titulo {
+    font-size: 1.7rem;
+    line-height: 1.05;
+  }
+  .tela-bancada .resumo-missao {
+    padding: 4px 10px;
+  }
+  .tela-bancada .barra-acoes {
+    padding: 5px 10px;
+  }
+  .tela-bancada .barra-acoes button {
+    padding-block: 6px;
+  }
+  /* Cabeçalho da peça numa faixa só: o "nada aqui conta" já está no subtítulo da tela. */
+  .tela-bancada .peca-teste-topo {
+    gap: 4px 8px;
+  }
+  .tela-bancada .peca-teste-topo small {
+    display: none;
+  }
+  .tela-bancada .peca-teste-topo .barra-dispositivo .botao-fantasma,
+  .tela-bancada .peca-teste-topo .segmentado button {
+    padding: 3px 7px;
+    font-size: 0.8rem;
+  }
+  .tela-bancada .peca-teste-topo .selo-material {
+    padding-block: 2px;
+    font-size: 0.8rem;
+  }
+  /* A descrição da junta está na ficha da missão; aqui fica só a instrução de uso. */
+  .tela-bancada .peca-teste > p.dica:not(.status-linha) {
+    display: none;
+  }
+}
+
+/* Painel de giro e câmera por cima da peça: compacto em telas baixas. */
+@media (max-height: 820px) {
+  .giro-sobre {
+    font-size: 0.72rem;
+    padding: 2px 5px;
+  }
+  .giro-sobre .botao-redondo {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
+  .giro-sobre .giro .giro-lado {
+    width: 22px;
+    height: 22px;
+  }
+  .giro-sobre .camera-livre > :not(.botao-centralizar):not(.botao-ver-cenario) {
+    display: none;
+  }
+}
+@media (max-height: 820px) {
+  body:not(.menu-grafico) .tela-bancada .tela-titulo {
+    font-size: clamp(24px, 4.4vh, 34px);
+  }
+  /* Giro, posição e Centralizar numa faixa: a peça fica à vista. */
+  .giro-sobre {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px 6px;
+  }
+  .giro-sobre .giro {
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+  .giro-sobre .giro-modo {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------- inspeção no resultado
+ * Peça, controles, abas e conteúdo em faixas separadas: a seção da peça não
+ * encolhe por baixo das abas; o conteúdo da aba rola por dentro e, se ainda
+ * faltar altura, o cartão inteiro rola.                                      */
+.tela-resultado .inspecao {
+  overflow-y: auto;
+}
+.tela-resultado .inspecao > * {
+  flex: none;
+}
+.tela-resultado .inspecao-peca {
+  flex: none;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: center;
+}
+.tela-resultado .inspecao-peca > * {
+  grid-column: 1 / -1;
+}
+.tela-resultado .inspecao-peca > .linha-controles {
+  grid-column: auto;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+}
+.tela-resultado .inspecao-peca > .linha-controles button,
+.tela-resultado .inspecao-peca > .linha-controles select {
+  padding: 4px 9px;
+  font-size: 0.82rem;
+  min-height: 0;
+}
+.tela-resultado .inspecao-peca > .linha-controles input[type='range'] {
+  width: 90px;
+}
+.tela-resultado .inspecao-area,
+.tela-resultado .inspecao-area-3d {
+  flex: none;
+  height: clamp(130px, 24vh, 360px);
+}
+.tela-resultado .inspecao > .aba-corpo:not([hidden]) {
+  flex: 1 1 auto;
+  min-height: 120px;
+  overflow-y: auto;
+}
+.tela-resultado .inspecao > .abas [role='tab'] {
+  padding-block: 6px;
+}
+.defeitos-previstos .lista-defeitos {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+.defeitos-previstos .lista-defeitos li {
+  margin-bottom: 6px;
+}
+@media (max-height: 820px) {
+  .tela-resultado .inspecao-peca > p.dica {
+    display: none;
+  }
+  .tela-resultado .grafico-perfil-missao,
+  .tela-resultado .grafico-corte,
+  .tela-resultado .grafico-velocidade {
+    height: 125px;
+  }
+}

@@ -1,0 +1,200 @@
+/* Painel de operação: a janela é o equipamento, sem rolagem na soldagem. */
+.jogo-imersivo { overflow: hidden; }
+.jogo-imersivo #app.app-cheia, .jogo-imersivo #app.tela-bancada { height: 100svh; min-height: 0; overflow: hidden; padding: 10px; gap: 8px; background: #101315; }
+.jogo-imersivo .tela-cabecalho { min-height: 30px; padding: 0 110px 6px 4px; border-bottom: 2px solid #ba3c30; }
+.jogo-imersivo .tela-cabecalho .tela-titulo, .jogo-imersivo .p15-cabecalho h2 { font: 700 20px BarlowMenu,sans-serif; letter-spacing: .8px; }
+.jogo-imersivo .tela-subtitulo { font-size: 14px; }
+.jogo-imersivo .resumo-missao { font: 14px Consolas,monospace; padding: 5px 8px; }
+.jogo-imersivo .tela-bancada .bancada { grid-template-columns: 360px minmax(0,1fr); gap: 10px; }
+.jogo-imersivo .painel-maquina, .jogo-imersivo .p15-painel, .jogo-imersivo .execucao .painel { background: linear-gradient(115deg,#343b3e,#202629 60%); border: 2px solid #485155; border-radius: 5px; box-shadow: inset 0 0 0 3px #151a1c, 0 5px 10px #0007; padding: 14px; overflow: hidden; min-height: 0; }
+.jogo-imersivo .maquina-topo { padding: 5px 0 14px; font: 700 16px BarlowMenu,sans-serif; text-transform: uppercase; }
+.jogo-imersivo .maquina-topo small { display: none; }
+.instrumentos { min-height: 0; display: flex; flex-direction: column; flex: 1; gap: 14px; }
+.instrumentos-abas { display: flex; gap: 4px; flex: none; }
+.instrumentos-abas button { flex: 1; padding: 9px 3px; border: 1px solid #626a6c; border-radius: 3px; background: #151b1d; color: #a7b0b1; font: 700 14px BarlowMenu,sans-serif; letter-spacing: 1px; box-shadow: 0 3px 0 #0b0e0f; }
+.instrumentos-abas button[aria-selected=true] { background: #c7cdc9; color: #18201f; border-color: #e5e9e5; box-shadow: 0 1px 0 #0b0e0f, inset 0 2px 4px #0003; }
+.instrumentos-pagina { min-height: 0; }
+.instrumentos-pagina[hidden] { display: none!important; }
+.jogo-imersivo .mostradores { grid-template-columns: 1fr; gap: 14px; margin-bottom: 20px; }
+.jogo-imersivo .mostrador { background: #181e20; border: 1px solid #535b5c; padding: 12px; border-radius: 3px; }
+.jogo-imersivo .mostrador .led, .jogo-imersivo .p15-numero, .jogo-imersivo .p15-linha output, .jogo-imersivo .valor-grande { font-family: Consolas,monospace; color: #b8f5d6; text-shadow: 0 0 8px #8fffc144; font-variant-numeric: tabular-nums; }
+.jogo-imersivo .mostrador .led { font-size: 36px; background: #09120e; padding: 8px; border: 2px inset #37463f; }
+.jogo-imersivo .rotulo-maquina { font: 700 13px Consolas,monospace; color: #c0c9c9; letter-spacing: .6px; }
+.jogo-imersivo .leituras { grid-template-columns: 1fr 1fr; gap: 6px; }
+.jogo-imersivo .leitura { padding: 8px; background: #151d1e; min-height: 62px; font: 14px Consolas,monospace; }
+.jogo-imersivo .maquina-grade { display: flex; flex-direction: column; gap: 12px; }
+.jogo-imersivo .maquina-coluna { display: flex; flex-direction: column; gap: 12px; }
+.jogo-imersivo .painel-maquina .dica { display: none; }
+.jogo-imersivo .grupo-maquina .chip { font-size: 14px; padding: 7px 6px; }
+.jogo-imersivo .peca-teste { padding: 8px; border: 1px solid #495253; background: #161c1e; gap: 6px; min-height: 0; }
+.jogo-imersivo .peca-teste-topo { min-height: 26px; font-size: 14px; }
+.jogo-imersivo .barra-dispositivo { display: none; }
+.jogo-imersivo .status-linha { font-size: 14px; margin: 0; }
+.jogo-imersivo .grupo-formato { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.jogo-imersivo .grupo-formato > .dica { display: none; }
+.jogo-imersivo .grupo-formato .chip { font-size: 14px; padding: 5px 8px; }
+.jogo-imersivo .peca-teste-area { flex: 1; min-height: 0; border: 1px solid #535d60; }
+.jogo-imersivo .resumo-passe { max-height: 40px; overflow: hidden; font-size: 14px; }
+.jogo-imersivo .barra-acoes { padding: 5px 10px; }
+.jogo-imersivo .giro-sobre { font-size: 13px; padding: 4px; }
+.jogo-imersivo .giro-sobre button { padding: 4px 6px; font-size: 13px; }
+.jogo-imersivo .p15 { height: 100%; gap: 8px; }
+.jogo-imersivo .p15-cabecalho { flex: none; min-height: 34px; padding: 4px 110px 6px 4px; border-bottom: 2px solid #ba3c30; }
+.jogo-imersivo .p15-cabecalho p { font-size: 14px; margin: 3px 0 0; }
+.jogo-imersivo .p15-grade { grid-template-columns: minmax(0,1fr) 320px; gap: 10px; }
+.jogo-imersivo .p15-painel { gap: 12px; }
+.maquina-identificacao { display: flex; flex-direction: column; gap: 5px; font: 700 19px BarlowMenu,sans-serif; letter-spacing: 1px; padding-bottom: 12px; border-bottom: 1px solid #596264; }
+.maquina-identificacao span { color: #9ad5ac; font: 13px Consolas,monospace; letter-spacing: 1px; }
+.jogo-imersivo .p15-painel .instrumentos-pagina > div { display: flex; flex-direction: column; gap: 16px; }
+.jogo-imersivo .p15-painel details { border: 0; margin: 0; padding: 0; }
+.jogo-imersivo .p15-painel details > summary { display: none; }
+.jogo-imersivo .p15-painel .p15-dica { font-size: 13px; }
+.jogo-imersivo .p15-fonte { padding: 10px; border: 1px solid #596264; background: #182022; gap: 14px; }
+.jogo-imersivo .p15-fonte legend { color: #bec9c8; text-transform: uppercase; font: 13px Consolas,monospace; }
+.jogo-imersivo .p15-painel label { font-size: 14px; }
+.jogo-imersivo .p15-painel select { font-size: 14px; padding: 6px; min-width: 0; }
+.jogo-imersivo .p15-painel .p15-linha output { font-size: 23px; background: #09120e; padding: 4px 8px; }
+.jogo-imersivo .p15-painel button { font-size: 14px; padding: 8px; }
+.jogo-imersivo .p15-painel .p15-acoes { flex: none; }
+.jogo-imersivo .p15-hud { top: auto; bottom: 42px; left: 10px; width: min(520px,calc(100% - 20px)); padding: 8px 12px; gap: 4px; border-radius: 2px; background: #111c1ee6; }
+.jogo-imersivo .p15-hud .p15-estado { padding: 4px 8px; font-size: 14px; }
+.jogo-imersivo .p15-hud .p15-numero { font-size: 20px; }
+.jogo-imersivo .p15-hud-grade { grid-template-columns: 1.3fr 1fr 1fr; }
+.jogo-imersivo .p15-instrucoes { bottom: 6px; left: 10px; right: 10px; padding: 4px 8px; font-size: 13px; }
+.jogo-imersivo .execucao { grid-template-columns: minmax(0,1fr) 260px; height: 100%; gap: 10px; }
+.jogo-imersivo .execucao .painel { gap: 10px; display: flex; flex-direction: column; }
+.jogo-imersivo .execucao .painel .bloco { padding: 10px 0; }
+.jogo-imersivo .execucao .painel .nota { display: none; }
+.jogo-imersivo .execucao .painel .rotulo-tentativa { font-size: 14px; }
+.jogo-imersivo .execucao .painel .etiqueta { font-size: 13px; padding: 6px; border-radius: 2px; }
+.jogo-imersivo .execucao .painel .valor-grande { font-size: 42px; }
+.jogo-imersivo .execucao .painel .medidas { font-size: 14px; }
+.jogo-imersivo .execucao .painel .botoes { margin-top: auto; position: static; padding: 0; background: none; }
+@media(max-height:740px) { .jogo-imersivo .p15-painel { gap: 8px; padding: 12px; } .jogo-imersivo .mostradores { gap: 8px; margin-bottom: 12px; } .jogo-imersivo .mostrador { padding: 8px; } .jogo-imersivo .leituras .leitura { min-height: 54px; } }
+
+.jogo-imersivo .tela-bancada > .tela-cabecalho { height: 36px; min-height: 36px; max-height: 36px; padding: 3px 110px 3px 4px; margin: 0; border-bottom-width: 1px; }
+.jogo-imersivo .tela-bancada > .tela-cabecalho .tela-titulo { margin: 0; font-size: 20px; }
+.jogo-imersivo .tela-bancada .resumo-missao { margin: 0; padding: 4px 8px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras { display: flex; flex-direction: column; gap: 12px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .mostradores { margin: 0; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .led { font-size: 32px; line-height: 1.1; padding: 5px 8px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .leituras { grid-template-columns: repeat(2,minmax(0,1fr)); margin: 0; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .leitura { min-width: 0; min-height: 74px; gap: 5px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .forma-secao { min-width: 0; }
+
+.jogo-imersivo .p15-hud { width: calc(100% - 20px); display: grid; grid-template-columns: 1.3fr 1fr; column-gap: 24px; bottom: 35px; }
+.jogo-imersivo .p15-hud .p15-estado { grid-column: 1/-1; }
+.jogo-imersivo .p15-hud-grade { align-content: center; }
+.jogo-imersivo .p15-hud .p15-rotulo { font-size: 13px; }
+.jogo-imersivo .p15-hud .p15-medidor { height: 8px; margin: 3px 0; }
+
+
+.jogo-imersivo .resumo-passe > button { padding: 4px 8px; font-size: 14px; }
+
+.jogo-imersivo .p15-fonte { min-width: 0; max-width: 100%; }
+
+.zoom-bancada { position:absolute;top:10px;left:10px;display:flex;align-items:center;gap:7px;background:#141e22e8;border:1px solid #56666c;padding:4px 8px;font:11px Consolas,monospace;color:#d3dfdd; }
+.zoom-bancada button { padding:3px 9px;font-size:18px;background:#263539;border:1px solid #647574;color:#d5eee7; }
+.zoom-bancada output { min-width:40px;text-align:center; }
+.p15-avaliacao { display:flex;gap:5px;margin-top:auto;flex:none; }
+.p15-avaliacao select { width:86px; }
+.p15-avaliacao button { flex:1; }
+.jogo-imersivo .p15-painel .p15-acoes { margin-top:0; }
+.resultado-smaw { font-size:14px; }
+.resultado-smaw .nota-smaw { font:700 36px Consolas,monospace;color:#a9e7cb;margin:8px 0; }
+.resultado-smaw ul { list-style:none;padding:0;display:grid;gap:8px; }
+.resultado-smaw li { display:flex;flex-direction:column;gap:2px;border-bottom:1px solid #444;padding-bottom:5px; }
+.resultado-smaw p { margin:8px 0; }
+
+.p15-avaliacao select { width:78px; }
+.p15-avaliacao button:last-child { flex:0 0 32px; }
+
+.p15-painel[hidden] { display:none !important; }
+.jogo-imersivo .p15-resultado { gap:10px; }
+.p15-resultado h2 { font-size:16px;margin:0; }
+.p15-resultado .placar { gap:10px; }
+.p15-resultado .placar-numero { font-size:42px; }
+.p15-resultado .conceito { font-size:34px;min-width:44px; }
+.p15-resultado .placar-rotulo { font-size:13px; }
+.p15-resultado .barras-categorias { margin:0;padding:0;display:grid;gap:10px; }
+.p15-resultado .barra-cabeca { font-size:14px;gap:6px; }
+.p15-resultado .selo { margin:0;font-size:14px;padding:7px; }
+.p15-resultado .p15-descontos { margin:0;font-size:14px; }
+.p15-resultado > button,.p15-proxima button { padding:9px 6px;min-height:34px;font-size:14px; }
+.p15-resultado small { font-size:14px;line-height:1.35; }
+.p15-proxima { display:grid;gap:6px;margin-top:auto; }
+.p15-avaliacao:has(button:first-child) button:first-child { font-size:14px; }
+
+.p15-hud[hidden],.p15-instrucoes[hidden] { display:none !important; }
+
+/* Leitura e navegação da v2.0: espaço próprio, sem cobrir a área de trabalho. */
+.jogo-imersivo .tela-cabecalho,
+.jogo-imersivo .tela-bancada > .tela-cabecalho,
+.jogo-imersivo .p15-cabecalho {
+  height: auto; min-height: 48px; max-height: none;
+  padding: 3px 190px 6px 4px; flex: none;
+}
+.jogo-imersivo .atalho-pause {
+  position: absolute; top: 10px; right: 10px; left: auto; z-index: 30;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 44px; padding: 9px 14px; border: 1px solid #e7b5a2;
+  border-radius: 4px; background: #8f2924; color: #fff5e4;
+  font: 700 16px/1.2 Arial, sans-serif; cursor: pointer;
+}
+.jogo-imersivo .atalho-pause:hover { background: #b7362e; }
+.jogo-imersivo .atalho-pause:focus-visible { outline: 3px solid #fff5e4; outline-offset: 2px; }
+.jogo-imersivo .atalho-pause kbd { font: 13px Arial, sans-serif; color: #fff5e4; }
+.jogo-imersivo .instrumentos-abas button { min-height: 40px; letter-spacing: .4px; }
+.jogo-imersivo .leitura { min-width: 0; overflow-wrap: anywhere; }
+.jogo-imersivo .painel-leituras .leituras { margin: 0; gap: 10px; }
+.jogo-imersivo .painel-leituras .leitura { min-height: 92px; gap: 6px; }
+.jogo-imersivo .painel-leituras .leitura:last-child { grid-column: 1 / -1; }
+.jogo-imersivo .painel-leituras .forma-secao { min-width: 0; }
+.jogo-imersivo .p15-hud { bottom: 70px; }
+.jogo-imersivo .p15-instrucoes { line-height: 1.45; gap: 4px 12px; }
+.jogo-imersivo .p15-painel .p15-dica,
+.jogo-imersivo .p15-painel small,
+.jogo-imersivo .p15-medidor-texto,
+.jogo-imersivo .p15-leituras { font-size: 13px; }
+.jogo-imersivo .p15-painel .instrumentos-pagina > div { gap: 10px; }
+.jogo-imersivo .p15-fonte { gap: 10px; }
+.jogo-imersivo .p15-painel .p15-linha { flex-wrap: wrap; }
+.jogo-imersivo .resumo-itens .rotulo { font-size: 13px; }
+.jogo-imersivo .resumo-itens strong { font-size: 14px; }
+.jogo-imersivo .giro-sobre .botao-redondo { width: 30px; height: 30px; }
+.jogo-imersivo .giro-sobre .giro .giro-lado { width: 30px; height: 30px; }
+@media (max-height: 740px) {
+  .jogo-imersivo .maquina-topo { padding-bottom: 8px; }
+  .jogo-imersivo .instrumentos { gap: 10px; }
+  .jogo-imersivo .painel-leituras .leitura { min-height: 80px; }
+}
+
+/* A execução não tem cabeçalho: reservar uma faixa para a navegação. */
+.jogo-imersivo #app:has(> .execucao) { padding-top: 62px; }
+.jogo-imersivo .execucao { grid-template-columns: minmax(0, 1fr) 300px; }
+.jogo-imersivo .execucao .painel { padding: 12px; gap: 8px; }
+.jogo-imersivo .execucao .painel .bloco { padding: 8px 0; }
+.jogo-imersivo .execucao .painel .bloco h2 { font-size: 13px; }
+.jogo-imersivo .execucao .painel .medidas { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+
+@media (max-height: 740px) {
+  .jogo-imersivo .p15-ferramentas button { padding: 6px 4px; line-height: 1.2; }
+  .jogo-imersivo .maquina-identificacao { padding-bottom: 8px; }
+  .jogo-imersivo .p15-fonte { gap: 8px; }
+}
+/* H103: girar o tubo nos treinos de eletrodo e TIG (abaixo do zoom). */
+.giro-tubo-bancada { position:absolute;top:52px;left:10px;display:flex;align-items:center;gap:7px;background:#141e22e8;border:1px solid #56666c;padding:4px 8px;font:11px Consolas,monospace;color:#d3dfdd; }
+.giro-tubo-bancada button { padding:3px 9px;font-size:18px;background:#263539;border:1px solid #647574;color:#d5eee7;touch-action:none; }
+.giro-tubo-bancada button:disabled { opacity:.45; }
+.giro-tubo-bancada output { min-width:40px;text-align:center; }
+
+/* MIG/MAG: ajustes e instrumentos visíveis juntos, sem reduzir os textos. */
+.jogo-imersivo .tela-bancada .bancada { grid-template-columns: 440px minmax(0,1fr); }
+.jogo-imersivo .tela-bancada .fonte-com-leituras { gap: 10px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .mostradores { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .mostrador { min-width: 0; padding: 8px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .mostrador .rotulo-maquina { min-height: 32px; display: block; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .leitura { min-height: 68px; padding: 7px; gap: 4px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .leitura:last-child { grid-column: 1/-1; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .forma-secao { display: flex; align-items: center; gap: 10px; }
+.jogo-imersivo .tela-bancada .fonte-com-leituras .forma-secao svg { width: 100px; height: 40px; flex: none; }

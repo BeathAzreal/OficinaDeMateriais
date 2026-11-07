@@ -1,0 +1,46 @@
+/* Identidade gráfica comum: textos condensados, recortes e vermelho. */
+:root{--fundo:#0c0c0c;--fundo-2:#121212;--sup:#191817;--sup-2:#262321;--sup-3:#34302c;--borda:#47413b;--borda-forte:#a79d8e;--texto:#f4efdf;--texto-2:#d0c7b8;--texto-3:#b3a99b;--laranja:#e12629;--laranja-2:#ff494b;--painel:#191817;--texto-fraco:#d0c7b8;--raio:0px;--sombra:6px 6px 0 #000}
+body:not(.menu-grafico){background:#0c0c0c;color:var(--texto)}
+body:not(.menu-grafico) .estrutura{background:linear-gradient(125deg,transparent 80%,#e1262912 80%,#e1262912 82%,transparent 82%),#0c0c0c}
+.topo{background:#0a0a0a;border-bottom:3px solid #e12629}
+.topo-titulo{font:700 24px BarlowMenu,'Arial Narrow',sans-serif;letter-spacing:1px;text-transform:uppercase}
+.logo{background:#e12629;color:#fff2df;border-radius:0;transform:skew(-8deg)}
+.versao-topo{color:#eee4d4;border:0;border-left:2px solid #e12629}
+.navegacao-lateral{background:#101010;border-right:1px solid #3d302c;gap:9px;padding-top:32px}
+.navegacao-lateral button{font:700 22px BarlowMenu,'Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.7px;border:0;border-radius:0;background:#161514;color:#d6cdbf;transition:transform 120ms,background 120ms;clip-path:polygon(3% 0,100% 0,97% 100%,0 100%)}
+.navegacao-lateral button[aria-current='page'],.navegacao-lateral button:hover:not(:disabled),.navegacao-lateral button:focus-visible{background:#e12629;color:#fff5e4;transform:translateX(4px);border:0;outline:none}
+.nav-legenda,.nav-rodape{color:#b3a99b}.nav-rodape strong{color:#f4efdf}
+body:not(.menu-grafico) .app{padding:28px 32px;gap:18px}
+body:not(.menu-grafico) .tela-cabecalho{padding:8px 0 17px;border-bottom:3px solid #e12629;margin-bottom:10px}
+body:not(.menu-grafico) .tela-titulo{font:700 clamp(34px,3.7vw,54px)/1 BarlowMenu,'Arial Narrow',sans-serif;letter-spacing:.7px;text-transform:uppercase;color:#f4efdf}
+.tela-titulo:focus{outline:none}
+.tela-subtitulo{color:#c8beae;line-height:1.6;margin-top:9px}
+body:not(.menu-grafico) h3,body:not(.menu-grafico) h4,.dialogo h2,.dialogo h3{font-family:BarlowMenu,'Arial Narrow',sans-serif;font-weight:700;letter-spacing:.5px}
+body:not(.menu-grafico) h3{font-size:27px}
+button{border-radius:0;box-shadow:none}
+body:not(.menu-grafico) button:not(.grafico-opcao){border-radius:0}
+button.primario,.primario{background:#e12629;color:#fff5e4;border-color:#e12629;font-weight:700}
+button.primario:hover:not(:disabled){background:#ff393d;color:#fff;border-color:#ff393d}
+button:focus-visible,a:focus-visible{outline:2px solid #f4efdf;outline-offset:3px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #f4efdf;outline-offset:3px;border-color:#e12629}
+input,select,textarea{background:#111;color:#f4efdf;border-color:#71665b;border-radius:0;accent-color:#e12629}
+.cartao,.cartao-missao,.form-torneio,.capitulo,.resumo-missao,.barra-acoes,.peca-teste{background:#191817;border-radius:0;border-color:#47413b;box-shadow:none}
+.cartao-missao,.capitulo{border-top:3px solid #e12629}
+.cartao-missao:hover{border-color:#b8ac9b}
+.cartao-missao h3,.capitulo h3{color:#f4efdf}
+.cartao-missao .setor,.etiqueta-setor{color:#ff7274}
+.cartao-missao .acoes button,.acoes>button{font-family:BarlowMenu,'Arial Narrow',sans-serif;font-size:19px;letter-spacing:.4px}
+.abas{border-bottom:2px solid #e12629;gap:6px}
+.abas [role='tab']{border-radius:0;font-family:BarlowMenu,sans-serif;font-size:20px;background:#191817;color:#c8beae}
+.abas [role='tab'][aria-selected='true']{background:#e12629;color:#fff5e4;border-color:#e12629}
+.continuar{background:#2b1818;color:#fff0dc;border-color:#e12629;border-radius:0}
+.placar-arcade{background:#181615;border-color:#e12629;border-radius:0}
+.dialogo,[role='dialog']{background:#191817;color:#f4efdf;border-radius:0;border:2px solid #e12629;box-shadow:10px 10px 0 #0009}
+[role='dialog'] h2{font:700 32px BarlowMenu,'Arial Narrow',sans-serif;text-transform:uppercase}
+[role='dialog'] button{border-radius:0}
+.barra-acoes,.resumo-missao{background:#131211}
+.chip-modelo,.botao-som-topo,.botao-menu-topo{border-radius:0;background:#171514;color:#e5dac9;border-color:#615346}
+/* Instrumentos mantêm geometria, cores de leitura e espaço da peça. */
+.app.tela-bancada{padding:12px 16px;gap:10px}
+@media(max-width:760px){body:not(.menu-grafico) .app{padding:18px 14px}.topo-titulo{font-size:19px}.navegacao-lateral button{font-size:18px}.navegacao-lateral button[aria-current='page']{transform:none}.app.tela-bancada{padding:8px}}
+@media(prefers-reduced-motion:reduce){.navegacao-lateral button{transition:none}}

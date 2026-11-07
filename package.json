@@ -1,0 +1,35 @@
+{
+  "name": "soldagem-mig-didatico",
+  "private": true,
+  "version": "2.2.0",
+  "type": "module",
+  "description": "Protótipo didático de soldagem MIG/MAG (modelo qualitativo simplificado)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc && node --check servidor/http.mjs && node --check servidor/index.mjs",
+    "test": "vitest run",
+    "portatil": "npm run build && node scripts/portatil.mjs",
+    "build:servidor": "vite build --ssr servidor/index.mjs --outDir dist-servidor",
+    "rede": "npm run build && npm run build:servidor && node dist-servidor/index.js",
+    "pacote:rede": "npm run build && npm run build:servidor && node scripts/pacote-rede.mjs",
+    "build:hospedado": "npm run portatil && node scripts/hospedado.mjs",
+    "preview:hospedado": "node scripts/preview-hospedado.mjs",
+    "pacote:v2": "npm run portatil && npm run build:servidor && node scripts/pacote-rede.mjs && node scripts/pacote-v22.mjs"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.186.1"
+  }
+}

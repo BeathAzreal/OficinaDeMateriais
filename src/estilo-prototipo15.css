@@ -1,0 +1,134 @@
+/* Bancada v1.5: vista 3D com leituras sobrepostas e painel lateral enxuto. */
+.p15{display:flex;flex-direction:column;min-height:0;height:100%;gap:12px}
+.p15 [hidden]{display:none!important}
+.app.app-cheia:has(.p15){height:calc(100dvh - 62px);box-sizing:border-box;overflow:hidden}
+.app.app-cheia>.p15{flex:1;height:0;overflow:hidden}
+
+.p15-cabecalho{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.p15-cabecalho h2{margin:0;font-size:30px}
+.p15-cabecalho p{margin:4px 0 0;color:#aebfc7}
+.p15-processos{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.p15-segmentos{display:flex}
+.p15-segmentos button{border-radius:0}
+.p15-segmentos button:first-child{border-radius:4px 0 0 4px}
+.p15-segmentos button:last-child{border-radius:0 4px 4px 0;margin-left:-1px}
+.p15 .p15-segmentos button[aria-pressed=true]{background:#ad312a;color:#fff;border-color:#da665a;position:relative}
+
+.p15-grade{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:minmax(0,1fr);gap:14px;flex:1;min-height:0}
+.p15-vista{position:relative;min-height:0;overflow:hidden;background:#20272d;border:1px solid #475158;border-radius:6px}
+.p15-vista canvas{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:none;outline-offset:-3px}
+
+/* Leituras sobre a vista: canto superior esquerdo, sem capturar o ponteiro. */
+.p15-hud{position:absolute;top:12px;left:12px;width:min(330px,calc(100% - 24px));display:flex;flex-direction:column;gap:8px;padding:10px 12px;background:#121c23e0;border:1px solid #3d4c56;border-radius:6px;pointer-events:none;color:#dfe8ee;font-size:13px}
+.p15-estado{display:block;padding:7px 10px;background:#283846;border-left:3px solid #d0a96a;line-height:1.35;font-size:14px}
+.p15-estado[data-arco=true]{border-color:#93d4be;background:#254737}
+.p15-estado[data-alerta=true]{border-color:#f08a7c;background:#4a2723}
+.p15-hud-linha{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.p15-rotulo{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#9fb2bd}
+.p15-numero{font-size:24px;font-variant-numeric:tabular-nums;color:#eed3a1;font-weight:700}
+.p15-medidor{position:relative;height:12px;margin:4px 0 3px}
+.p15-medidor-faixas{display:flex;height:100%;border-radius:3px;overflow:hidden}
+.p15-faixa{height:100%}
+.p15-faixa-contato{background:#b8473b}
+.p15-faixa-atencao{background:#b68a3c}
+.p15-faixa-bom{background:#3f9a6e}
+.p15-faixa-fora{background:#3a444b}
+.p15-medidor-marca{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px #000a;border-radius:2px}
+.p15-medidor-texto{font-size:12px;color:#b9c8d1}
+.p15-medidor-texto[data-faixa=adequado]{color:#9fe0c4}
+.p15-medidor-texto[data-faixa=curto],.p15-medidor-texto[data-faixa=longo]{color:#f0cf8c}
+.p15-hud-grade{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:8px}
+.p15-hud-item{display:flex;flex-direction:column;gap:2px;font-variant-numeric:tabular-nums}
+.p15-consumo progress{width:100%;height:6px;accent-color:#d7b470}
+.p15-consumo progress[data-fim=true]{accent-color:#e0705f}
+
+.p15-instrucoes{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px 12px;padding:7px 10px;background:#16232dd9;border-radius:6px;pointer-events:none;font-size:12px;color:#c9d6de}
+.p15-instrucoes kbd{display:inline-block;min-width:1.4em;margin-right:4px;padding:0 5px;border:1px solid #5d6d78;border-bottom-width:2px;border-radius:3px;background:#22313b;color:#f2e6cf;font:600 11px/1.6 inherit;text-align:center}
+
+/* Painel lateral. */
+.p15-painel{display:flex;flex-direction:column;gap:10px;overflow:auto;min-height:0;background:#18242d;border:1px solid #4a545b;padding:14px;border-radius:6px}
+.p15-painel p{margin:0;line-height:1.45}
+.p15-painel label{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.p15-painel input[type=range]{width:100%}
+.p15-linha{display:flex!important;flex-direction:row!important;justify-content:space-between;align-items:center;gap:8px}
+.p15-linha small{color:#94a7b2;font-size:11px}
+.p15-linha output{font-variant-numeric:tabular-nums;color:#eed3a1;font-weight:600}
+.p15-ferramentas{display:flex;gap:5px}
+.p15-ferramentas button{flex:1;padding:8px 4px;font-size:12px}
+.p15 .p15-ferramentas button[aria-pressed=true]{background:#456477;color:#fff;border-color:#8db6c8}
+.p15-ajuda{font-size:13px;color:#dbe5ea}
+.p15-comandos{display:flex;flex-direction:column;gap:6px}
+.p15-acionar{min-height:46px;touch-action:none;user-select:none}
+.p15-alerta{background:#5a2a24;border-color:#d0786b;color:#ffe2dc}
+.p15-fonte{display:flex;flex-direction:column;gap:8px;margin:0;padding:10px;border:1px solid #3d4c56;border-radius:6px}
+.p15-fonte legend{padding:0 4px;color:#e6d7ba;font-size:13px}
+.p15-fonte select{min-width:90px}
+.p15-check{flex-direction:row!important;align-items:center;gap:8px!important;font-size:13px!important}
+.p15-painel details{border-top:1px solid #44515b;padding-top:8px}
+.p15-painel details>*+*{margin-top:8px}
+.p15-painel summary{cursor:pointer;color:#e6d7ba}
+.p15-leituras{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:0;font-size:12px}
+.p15-leituras dt{color:#9fb2bd}
+.p15-leituras dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.p15-dica,.p15-painel small{font-size:12px;color:#b3c4ce;line-height:1.4}
+.p15-acoes{display:flex;gap:8px;margin-top:auto}
+.p15-acoes button{flex:1}
+
+/* Diálogo de controles. */
+.p15-config{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.p15-config label{display:flex;flex-direction:column;font-size:13px;gap:4px}
+.p15-config p{grid-column:1/-1}
+.p15-config input,.p15-config select{width:100%}
+.p15-config input[type=checkbox]{width:auto}
+.p15-config .erro{color:#f5a49a}
+
+@media(max-height:780px){
+  .p15{gap:8px}
+  .p15-cabecalho h2{font-size:24px}
+  .p15-cabecalho p{font-size:13px}
+  .p15-painel{gap:8px;padding:11px}
+  .p15-hud{gap:6px;padding:8px 10px}
+  .p15-numero{font-size:20px}
+  .p15-dica,.p15-painel small{font-size:11px}
+}
+@media(max-width:1000px){
+  .p15-grade{grid-template-columns:minmax(0,1fr) 250px}
+  .p15-hud-grade{grid-template-columns:1fr 1fr}
+  .p15-hud-grade>:first-child{grid-column:1/-1}
+  .p15-instrucoes{display:none}
+}
+
+/* Treino: escolha do processo e objetivo da peça de eletrodo. */
+.treino-processo{display:flex;align-items:center;gap:0;margin:0 0 18px}
+.treino-processo span{margin-right:12px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9fb2bd}
+.treino-processo button{border-radius:0}
+.treino-processo button:nth-of-type(1){border-radius:4px 0 0 4px}
+.treino-processo button:nth-of-type(2){border-radius:0 4px 4px 0;margin-left:-1px}
+.treino-processo button[aria-pressed=true]{background:#ad312a;color:#fff;border-color:#da665a;position:relative}
+.p15-objetivo{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid #3d4c56;border-radius:6px;background:#1d2b35}
+.p15-objetivo p{font-size:13px;color:#e6d7ba}
+.p15-objetivo ul{list-style:none;margin:0;padding:0;display:grid;gap:3px;font-size:12px}
+.p15-objetivo li{display:flex;justify-content:space-between;gap:8px;color:#b9c8d1}
+.p15-objetivo li::before{content:'○';margin-right:6px;color:#6f808a}
+.p15-objetivo li>span:first-child{flex:1}
+.p15-objetivo li[data-ok=true]{color:#bfe8d4}
+.p15-objetivo li[data-ok=true]::before{content:'✓';color:#6fd3a5}
+.p15-obj-valor{font-variant-numeric:tabular-nums;color:#e9dcc4}
+
+/* Defeitos do eletrodo (H82–H85): cor do avanço pelo calor e lista no resultado. */
+.p15-hud-item output[data-faixa=bom]{color:#9fe0c4}
+.p15-hud-item output[data-faixa=frio]{color:#9cc6f0}
+.p15-hud-item output[data-faixa=quente]{color:#f0b07a}
+.p15-botoes-resultado{display:grid;grid-template-columns:1fr auto;gap:8px}
+.p15-botao-defeitos:not([data-graves="0"]){border-color:#f08a7c;color:#f6c2b8}
+.p15-defeitos li{border-left:3px solid #d0a96a;padding-left:8px}
+.p15-defeitos li[data-grave=true]{border-left-color:#f08a7c}
+/* H110: solda subaquática (chave da corrente e laudo da solda molhada). */
+.p15-chave[data-estado=ligada]{color:#ffd166;font-weight:700}
+.p15-chave[data-estado=desligada]{color:#9fe0c4}
+.p15-chave[data-estado=ligando],.p15-chave[data-estado=desligando]{color:#9cc6f0}
+.laudo-sub{border:1px solid #2f6f7c;background:#0c2a31;border-radius:6px;padding:8px 10px;margin:6px 0;display:grid;gap:4px}
+.laudo-sub ul{margin:0;padding-left:18px;display:grid;gap:2px}
+.laudo-sub li[data-ok=false]{color:#f0a090}
+.laudo-sub li[data-ok=true]{color:#a8e6cf}
+.laudo-sub small{opacity:.85}

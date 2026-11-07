@@ -1,0 +1,117 @@
+/* Celular e tablet (v2.2): barra de controles de toque e layout compacto. */
+.toque-barra { position: fixed; right: 8px; bottom: 8px; z-index: 60; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; max-width: calc(100vw - 16px); pointer-events: none; }
+.toque-barra[hidden] { display: none; }
+.toque-barra > * { pointer-events: auto; }
+.toque-linha, .toque-teclas { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.toque-barra button { min-width: 48px; min-height: 44px; padding: 6px 10px; border-radius: 10px; border: 1px solid #ffffff40; background: #10161bd9; color: #f4efdf; font: 700 14px Arial, sans-serif; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.toque-barra button[aria-pressed="true"], .toque-barra button.apertada { background: #2b5d4a; border-color: #93d4be; }
+.toque-tecla { background: #1d2a33e6 !important; }
+.toque-girar { display: none; }
+
+body.modo-toque { -webkit-tap-highlight-color: transparent; }
+body.modo-toque canvas { touch-action: none; }
+body.toque-modo-camera canvas { outline: 3px solid #93d4be88; outline-offset: -3px; }
+
+/* Na vertical, um aviso para virar o celular (não bloqueia). */
+@media (orientation: portrait) and (max-width: 820px) {
+  body.modo-toque .toque-girar:not([hidden]) { display: block; position: fixed; top: 0; left: 0; right: 0; z-index: 61; padding: 8px 12px; background: #7a2f28; color: #fff; font: 700 13px Arial, sans-serif; text-align: center; }
+}
+
+/* Telas pequenas (celular deitado, tablet pequeno): painel lateral vira gaveta. */
+@media (max-width: 1024px), (max-height: 560px) {
+  body.modo-toque .navegacao-lateral { display: none; }
+  body.modo-toque .topo { min-height: 0; padding-top: 4px; padding-bottom: 4px; }
+  body.modo-toque .topo-titulo, body.modo-toque #botao-info { display: none; }
+  body.modo-toque .p15-cabecalho { padding: 2px 8px; }
+  body.modo-toque .p15-cabecalho p, body.modo-toque .p15-cabecalho .p15-processos { display: none; }
+  body.modo-toque .p15-cabecalho .tela-titulo { font-size: 15px !important; margin: 0; }
+  body.modo-toque .p15-grade { grid-template-columns: 1fr !important; }
+  body.modo-toque .p15-painel { position: fixed; top: 0; right: 0; bottom: 0; width: min(380px, 88vw); z-index: 55; overflow-y: auto; transform: translateX(105%); transition: transform 200ms ease; box-shadow: -8px 0 24px #0009; }
+  body.modo-toque.toque-painel-aberto .p15-painel { transform: none; }
+  body.modo-toque .p15-hud { font-size: 11px; padding: 4px 6px; max-height: 42%; overflow: hidden; }
+  body.modo-toque .p15-hud .p15-hud-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body.modo-toque .tr-dro-valor { font-size: 16px; }
+  body.modo-toque .zoom-bancada { display: none; }
+  body.modo-toque .lb-janela-caixa { max-width: 62%; }
+  body.modo-toque .app.app-cheia { height: calc(100dvh - 40px) !important; }
+  body.modo-toque .atalho-pause { top: 4px; right: 4px; padding: 4px 8px; font-size: 13px; }
+}
+
+/* Correções de tela pequena (testadas a 915 × 412, celular deitado). */
+@media (max-width: 1024px), (max-height: 560px) {
+  /* Sem a barra lateral, a grade da página fica com uma coluna só. */
+  body.modo-toque .estrutura { grid-template-columns: minmax(0, 1fr) !important; }
+  /* HUD compacto no canto, para não cobrir a peça. */
+  body.modo-toque .p15-hud, body.modo-toque.jogo-imersivo .p15-hud { top: 4px !important; bottom: auto !important; left: 4px !important; width: min(430px, 54%) !important; display: flex !important; flex-direction: column; gap: 3px !important; padding: 4px 8px !important; font-size: 10px; }
+  body.modo-toque .p15-hud .p15-estado { font-size: 11px !important; padding: 2px 6px !important; }
+  body.modo-toque .p15-hud .p15-numero { font-size: 14px !important; }
+  body.modo-toque .p15-hud .p15-rotulo { font-size: 9px !important; }
+  body.modo-toque .p15-hud .p15-medidor { height: 5px !important; margin: 1px 0 !important; }
+  body.modo-toque .p15-hud-grade { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 2px 6px !important; }
+  body.modo-toque .tr-dro { gap: 10px; padding: 2px 6px; }
+  body.modo-toque .tr-dro-valor { font-size: 14px !important; }
+  body.modo-toque .atalho-pause { top: 4px !important; right: 4px !important; padding: 3px 8px !important; font-size: 12px !important; }
+  /* Barra de toque mais enxuta. */
+  .toque-barra { gap: 4px; }
+  .toque-linha, .toque-teclas { gap: 4px; }
+  .toque-barra button { min-width: 40px; min-height: 36px; padding: 4px 8px; font-size: 12px; }
+}
+/* Gaveta aberta: só o ☰ fica, para fechar. */
+body.toque-painel-aberto .toque-teclas, body.toque-painel-aberto .toque-linha > :not(.toque-painel) { display: none; }
+
+/* Menu do celular deitado: título e opções menores para caberem todas. */
+@media (max-height: 520px) {
+  body.modo-toque.menu-grafico #app { padding-top: 12px !important; padding-bottom: 12px !important; overflow-y: auto !important; }
+  body.modo-toque .grafico-titulo { margin-bottom: 8px !important; }
+  body.modo-toque .grafico-titulo .tela-titulo { font-size: 24px !important; }
+  body.modo-toque .grafico-titulo p { display: none; }
+  body.modo-toque .grafico-lista { gap: 2px !important; width: min(340px, 44vw) !important; }
+  body.modo-toque .grafico-opcao { font-size: 17px !important; min-height: 0 !important; padding-top: 5px !important; padding-bottom: 5px !important; }
+  body.modo-toque .grafico-legenda, body.modo-toque .grafico-rodape { display: none !important; }
+  body.modo-toque .grafico-versao { top: 6px !important; right: 6px !important; }
+}
+.toque-barra [hidden] { display: none !important; }
+@media (max-width: 1024px), (max-height: 560px) {
+  body.modo-toque.jogo-imersivo #app .atalho-pause, body.modo-toque #app .atalho-pause { top: 4px !important; right: 4px !important; padding: 3px 8px !important; font-size: 12px !important; min-height: 0 !important; }
+  body.modo-toque .atalho-pause kbd { display: none; }
+  /* Sempre visível no canto (no celular não há Esc). */
+  body.modo-toque.jogo-imersivo #app .atalho-pause { position: fixed !important; z-index: 56; }
+}
+@media (max-width: 1024px), (max-height: 560px) {
+  /* Laboratório: janela de trabalho no canto de baixo, sem cobrir o HUD do alto. */
+  body.modo-toque .lb .lb-janela-caixa { top: auto !important; bottom: 4px; left: 4px; max-width: none !important; padding: 3px; }
+  body.modo-toque .lb .p15-vista .lb-janela-caixa canvas.lb-janela { width: auto !important; height: min(52vh, 230px) !important; max-width: 58vw; }
+  body.modo-toque .lb .lb-janela-titulo { font-size: 10px; }
+  body.modo-toque .lb .lb-recursos { display: none; }
+}
+
+/* MIG/MAG (tela de execução): o painel lateral vira gaveta, a cena ocupa a tela toda
+   e a mensagem de estado fica flutuando no alto (sem transform no painel, para o fixed valer). */
+@media (max-width: 1024px), (max-height: 560px) {
+  body.modo-toque .execucao { grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: minmax(0, 1fr) !important; height: 100% !important; }
+  body.modo-toque .execucao .area-peca { height: 100% !important; min-height: 0 !important; max-height: none !important; overflow: hidden; }
+  body.modo-toque .execucao canvas.tela-solda { display: block; width: 100% !important; height: 100% !important; }
+  body.modo-toque .execucao .giro-sobre { top: 4px !important; left: 4px !important; right: auto !important; }
+  body.modo-toque .execucao .painel { position: fixed !important; top: 0; bottom: 0; right: calc(-1 * min(380px, 88vw) - 24px); width: min(380px, 88vw); z-index: 55; overflow-y: auto; transition: right 200ms ease; box-shadow: -8px 0 24px #0009; max-height: none !important; }
+  body.modo-toque.toque-painel-aberto .execucao .painel { right: 0; }
+  body.modo-toque .execucao .painel .status { position: fixed; bottom: 8px; left: 8px; width: min(340px, 40vw); z-index: 54; margin: 0; padding: 4px 8px; font-size: 11px; line-height: 1.3; background: #10161be6; border: 1px solid #ffffff30; }
+  body.modo-toque.toque-painel-aberto .execucao .painel .status { position: static; width: auto; font-size: inherit; }
+  body.modo-toque .giro-sobre { zoom: 0.62; }
+}
+
+/* Celular deitado com a barra do navegador (altura útil de ~300 px): tudo menor. */
+@media (max-height: 480px) {
+  body.modo-toque .p15-cabecalho { display: none !important; }
+  body.modo-toque .p15-hud { zoom: 0.82; }
+  body.modo-toque .p15-instrucoes { display: none !important; }
+  body.modo-toque .toque-barra { zoom: 0.8; }
+  body.modo-toque .p15-painel, body.modo-toque .execucao .painel { zoom: 0.85; }
+  body.modo-toque.jogo-imersivo #app.app-cheia { height: 100svh !important; padding: 4px !important; gap: 4px !important; }
+  body.modo-toque .tela-cabecalho { padding: 2px 0 4px !important; margin-bottom: 4px !important; }
+  body.modo-toque .tela-cabecalho .tela-titulo { font-size: 18px !important; }
+  body.modo-toque .tela-cabecalho p { font-size: 11px !important; }
+}
+/* Telas de leitura e preparo (fora das bancadas): tudo um pouco menor quando a altura é curta. */
+@media (max-height: 480px) {
+  body.modo-toque:not(.menu-grafico) #app.app:not(.app-cheia) { zoom: 0.72; height: calc(100svh / 0.72) !important; max-height: calc(100svh / 0.72) !important; }
+}

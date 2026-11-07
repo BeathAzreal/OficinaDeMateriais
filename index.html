@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oficina de Soldagem · Alpha v2.2</title>
+    <meta name="description" content="Jogo didático de prática industrial: usinagem, soldagem, manufatura aditiva e análise de falhas, com ordens de serviço." />
+  </head>
+  <body>
+    <a class="pular" href="#app">Pular para o conteúdo</a>
+    <header class="topo">
+      <button id="botao-inicio" type="button" class="topo-marca" aria-label="Voltar ao menu">
+        <span class="logo" aria-hidden="true"></span>
+        <h1 class="topo-titulo">Oficina de Soldagem</h1>
+        <span class="versao-topo">ALPHA v2.2</span>
+      </button>
+      <nav class="topo-nav" aria-label="Navegação principal">
+        <span id="topo-contexto" class="topo-contexto"></span>
+        <button id="botao-info" type="button" class="chip-modelo">Modelo didático <span aria-hidden="true">ⓘ</span></button>
+        <button id="botao-som" type="button" class="botao-som-topo" aria-pressed="true" title="Som do arco">🔊 Som</button>
+        <button id="botao-menu" type="button" class="botao-menu-topo">Menu</button>
+      </nav>
+    </header>
+    <div id="avisos" class="avisos" role="status" aria-live="polite"></div>
+    <div class="estrutura">
+      <nav class="navegacao-lateral" aria-label="Atividades da estação">
+        <p class="nav-legenda">Área de trabalho</p>
+        <button type="button" data-rota="inicio" aria-label="Início" title="Início"><span class="nav-icone" aria-hidden="true"></span><span class="nav-texto">Início</span></button>
+<button type="button" data-rota="fabrica" aria-label="Fábrica" title="Fábrica"><span class="nav-icone" aria-hidden="true"></span><span class="nav-texto">Fábrica</span></button>
+<button type="button" data-rota="arcade" aria-label="Arcade" title="Arcade"><span class="nav-icone" aria-hidden="true"></span><span class="nav-texto">Arcade</span></button>
+<button type="button" data-rota="treino" aria-label="Treino" title="Treino"><span class="nav-icone" aria-hidden="true"></span><span class="nav-texto">Treino</span></button>
+<button type="button" data-rota="recordes" aria-label="Recordes" title="Recordes"><span class="nav-icone" aria-hidden="true"></span><span class="nav-texto">Recordes</span></button>
+<button type="button" data-rota="config" aria-label="Configurações" title="Configurações"><span class="nav-icone" aria-hidden="true"></span><span class="nav-texto">Configurações</span></button>
+        <p class="nav-rodape"><strong>ESTAÇÃO OFFLINE</strong>Dados neste navegador<br>Modelo didático</p>
+      </nav>
+      <main id="app" class="app" tabindex="-1"></main>
+    </div>
+    <div id="camada-dialogo"></div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

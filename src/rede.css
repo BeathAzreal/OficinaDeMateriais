@@ -1,0 +1,44 @@
+.menu-grafico #app.rede-pagina { height:100svh;min-height:0;overflow:hidden;padding:44px 45vw 24px 4vw;display:flex;flex-direction:column; }
+.rede-pagina .grafico-titulo { flex:none;margin-bottom:16px; }
+.rede-pagina .grafico-titulo .tela-titulo { font-size:clamp(38px,4vw,60px); }
+.rede-caixa { min-height:0;max-width:650px;background:#141a1eee;border:1px solid #43545c;padding:18px;display:flex;flex-direction:column;gap:12px;color:#e1e9e9;font-size:14px; }
+.rede-caixa label { display:flex;flex-direction:column;gap:5px;font-size:11px;letter-spacing:.07em; }
+.rede-caixa input,.rede-caixa select { width:100%;min-width:0;height:42px;box-sizing:border-box;background:#0d1317;border:1px solid #566974;color:#eef3f1;border-radius:0;font:15px BarlowMenu,Arial,sans-serif;padding:7px 10px; }
+.rede-caixa button { border-radius:0;padding:9px 14px;font:600 15px BarlowMenu,Arial,sans-serif;min-height:38px; }
+.rede-caixa .primario { background:#df292b;color:white; }
+.rede-caixa p { margin:0;line-height:1.4; }
+.rede-opcoes { display:grid;grid-template-columns:1.5fr 1fr;gap:10px; }
+.rede-entrar { display:grid;grid-template-columns:1fr 1.1fr;gap:10px;border-top:1px solid #43545c;padding-top:12px; }
+.rede-erro { color:#ffb7a0;min-height:16px;font-size:12px; }
+.rede-conexao,.rede-endereco { font-size:12px;color:#acced4; }
+.rede-instrucoes { font-size:12px; }
+.rede-instrucoes p { margin:8px 0; }
+.rede-codigo input { height:58px;font:700 34px Consolas,monospace;letter-spacing:.2em;color:#f4d394;text-align:center; }
+.rede-jogadores { display:grid;gap:8px; }
+.rede-jogador { padding:10px 12px;border:1px solid #3c515b;display:flex;justify-content:space-between;gap:12px; }
+.rede-jogador span { color:#aacfb9;font-size:12px; }
+.rede-jogador.vazio { color:#84959b; }
+.rede-contagem { font:700 18px Consolas,monospace;color:#d9c591; }
+.rede-nota { font:700 30px Consolas,monospace;color:#b0e0c7; }
+.rede-acoes { display:flex;gap:10px; }
+.rede-hud { position:absolute;right:10px;top:10px;max-width:310px;z-index:4;background:#111b22e8;border:1px solid #4b6c7a;padding:8px 12px;color:#d8e9ed;font:12px Consolas,monospace;pointer-events:none; }
+.rede-comparacao { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+.rede-resultado-jogador { padding:12px;border:1px solid #465c66;display:flex;flex-direction:column;gap:10px;min-width:0; }
+.rede-resultado-jogador h3 { margin:0;overflow-wrap:anywhere;font-size:18px; }
+.rede-resultado-jogador .rede-nota { font-size:24px;white-space:nowrap; }
+.rede-resultado-jogador.vencedor { border-color:#a1c994;background:#23443055; }
+@media(max-height:740px){.menu-grafico #app.rede-pagina{padding-top:30px}.rede-caixa{padding:14px;gap:9px}.rede-caixa button{min-height:34px;padding:7px 10px}.rede-caixa input,.rede-caixa select{height:38px}.rede-pagina .grafico-titulo{margin-bottom:10px}}
+@media(max-width:900px){.menu-grafico #app.rede-pagina{padding-right:15vw;background-position:75% center}.rede-caixa{max-width:650px}}
+
+/* Convites online sem ocultar ações em telas de notebook. */
+.rede-caixa label { font-size:13px; }
+.rede-conexao,.rede-endereco,.rede-erro { font-size:14px; }
+.rede-convite { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end; }
+.rede-convite input { font:13px Arial,sans-serif; }
+.rede-link-online { display:block;padding:12px;background:#df292b;color:#fff;text-align:center;font-weight:700; }
+.rede-caixa [hidden] { display:none!important; }
+.rede-caixa .rede-conexao:empty,.rede-caixa .rede-erro:empty { display:none; }
+@media(max-height:740px){.rede-caixa{gap:8px}.rede-pagina .grafico-titulo .tela-titulo{font-size:38px}.rede-jogador{padding:7px 10px}.rede-codigo input{height:46px;font-size:28px}}
+
+/* O estado da disputa fica fora da faixa dos controles de camera. */
+.rede-hud { top:auto;bottom:10px;font-size:13px;max-width:min(400px,calc(100% - 20px)); }

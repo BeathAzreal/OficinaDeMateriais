@@ -1,0 +1,17 @@
+/* Torno convencional (v2.2): mostrador digital (DRO), marchas, instrumentos. */
+.tr .tr-hud { gap: 8px; }
+.tr-dro { display: flex; gap: 18px; padding: 6px 10px; background: #0b1a12; border: 1px solid #2d5a3e; border-radius: 4px; font-family: var(--mono, ui-monospace, Consolas, monospace); }
+.tr-dro > div { display: flex; flex-direction: column; gap: 2px; }
+.tr-dro-valor { font-size: 22px; color: #7dffb0; letter-spacing: 1px; text-shadow: 0 0 6px #2bd17a66; min-width: 7ch; text-align: right; }
+.tr [data-fora="true"] { color: #ffb36b; }
+.tr-maquina { display: flex; flex-direction: column; gap: 10px; }
+.tr-eixo { font-weight: 700; padding: 10px; border: 2px solid #3f9f6b; }
+.tr-eixo.ligado { background: #7a2f28; border-color: #da665a; color: #fff; }
+.tr-marchas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 4px; }
+.tr-marchas button { padding: 6px 2px; font-family: var(--mono, monospace); font-size: 12px; }
+.tr-marchas button[aria-pressed="true"], .tr-automatico button[aria-pressed="true"], .tr-instrumentos button[aria-pressed="true"] { background: #2b5d4a; border-color: #93d4be; color: #fff; }
+.tr-automatico, .tr-instrumentos { display: flex; flex-direction: column; gap: 4px; }
+.tr-leituras { margin: 8px 0 0; padding-left: 18px; font-size: 13px; font-family: var(--mono, monospace); display: flex; flex-direction: column; gap: 4px; }
+.tr-leituras li:first-child { color: #7dffb0; }
+.tr-desenho { padding: 8px; border: 1px dashed #6b7a86; border-radius: 4px; font-size: 13px; background: #f4f1ea10; }
+.tr-livre ul { padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }

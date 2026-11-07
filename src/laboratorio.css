@@ -1,0 +1,28 @@
+/* Laboratório de Falhas (v2.2): 3D da bancada com a janela de trabalho por cima. */
+.lb .lb-vista { position: relative; }
+.lb-janela-caixa { position: absolute; left: 14px; top: 14px; display: flex; flex-direction: column; gap: 4px; padding: 6px; background: #0f1418e6; border: 1px solid #3e4c56; border-radius: 6px; max-width: min(560px, 58%); z-index: 2; }
+.lb-janela-titulo { font-size: 12.5px; color: #e6d7ba; }
+.lb-janela { width: 100%; height: auto; display: block; border-radius: 4px; cursor: crosshair; touch-action: none; }
+.lb-hud { display: flex; flex-direction: column; gap: 6px; }
+.lb-recursos { font-size: 12.5px; color: #b9c8d1; font-family: var(--mono, monospace); }
+.lb-estacao { display: flex; flex-direction: column; gap: 10px; }
+.lb-linha { display: flex; flex-wrap: wrap; gap: 6px; }
+.lb-linha button { flex: 1 1 auto; }
+.lb [aria-pressed="true"] { background: #2b5d4a; border-color: #93d4be; color: #fff; }
+.lb-perigo { border-color: #d0786b !important; color: #ffd8d2 !important; }
+.lb-check { display: flex; gap: 6px; align-items: center; }
+.lb-progresso { margin: 0; padding-left: 18px; font-size: 12.5px; font-family: var(--mono, monospace); display: flex; flex-direction: column; gap: 2px; }
+.lb-hv { margin: 0; padding-left: 18px; font-size: 12.5px; font-family: var(--mono, monospace); max-height: 160px; overflow: auto; }
+.lb-resultados { display: flex; flex-direction: column; gap: 6px; }
+.lb-resultado { border: 1px solid #3e4c56; border-radius: 4px; padding: 6px 8px; background: #161d23; }
+.lb-resultado summary { cursor: pointer; font-size: 13px; }
+.lb-achados, .lb-limites { margin: 6px 0 0; padding-left: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; }
+.lb-achados li { display: flex; gap: 8px; align-items: flex-start; justify-content: space-between; }
+.lb-achados button { flex: none; padding: 3px 8px; font-size: 12px; }
+.lb-limites li[data-sev="grave"] { color: #ffb3a8; }
+.lb-limites li[data-sev="atencao"] { color: #f0cf8c; }
+.lb-escritorio { position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; background: #0f141b; }
+.lb-escritorio-barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 14px; background: #171b1f; border-bottom: 3px solid #57c48a; }
+.lb-escritorio-conteudo { flex: 1; min-height: 0; overflow: auto; }
+/* A janela é um canvas dentro da vista: não herda o "preencher tudo" do canvas 3D. */
+.lb .p15-vista .lb-janela-caixa canvas.lb-janela { position: static; inset: auto; width: 560px; max-width: 100%; height: auto; aspect-ratio: 560 / 320; }

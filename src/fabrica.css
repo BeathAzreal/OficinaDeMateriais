@@ -1,0 +1,69 @@
+/* Fábrica (v2.2): galpão 3D à esquerda, ordem de serviço e setores à direita. */
+.app.app-cheia:has(.fabrica), .app.app-cheia:has(.setor-react) { height: calc(100dvh - 62px); box-sizing: border-box; overflow: hidden; }
+.fabrica { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 420px); }
+.fabrica-palco { position: relative; min-width: 0; min-height: 0; background: #151b21; }
+.fabrica-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
+.fabrica-canvas:active { cursor: grabbing; }
+.fabrica-sem-3d { display: grid; place-items: center; height: 100%; padding: 24px; text-align: center; color: var(--texto-fraco); }
+.fabrica-painel { min-height: 0; overflow-y: auto; padding: 16px 18px 20px; border-left: 1px solid var(--borda); background: #171b1f; display: flex; flex-direction: column; gap: 12px; }
+.fabrica-painel .tela-cabecalho { margin: 0; }
+.fabrica-sub { margin: 4px 0 0; font-size: 14px; letter-spacing: .5px; text-transform: uppercase; color: #e6d7ba; }
+.fabrica-dica { margin: 0; font-size: 13px; color: var(--texto-fraco); min-height: 2.6em; }
+
+.os-cartao { display: flex; flex-direction: column; gap: 8px; border-top: 4px solid #e0b100; }
+.os-cartao h3 { margin: 0; font-size: 18px; }
+.os-codigo { margin: 0; font: 600 12px/1.3 var(--mono, monospace); color: #e0b100; letter-spacing: .4px; }
+.os-situacao { margin: 0; font-size: 13px; color: var(--texto-fraco); }
+.os-etapas { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.os-etapa { border: 1px solid var(--borda); border-radius: 6px; padding: 8px 10px; background: #1f2429; display: flex; flex-direction: column; gap: 4px; }
+.os-etapa p { margin: 0; font-size: 13px; }
+.os-etapa button { align-self: flex-start; margin-top: 2px; }
+.os-proxima { border-color: #e0b100; box-shadow: inset 3px 0 #e0b100; }
+.os-etapa-topo { display: flex; align-items: center; gap: 8px; }
+.os-etapa-topo strong { flex: 1; }
+.os-numero { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #2e3238; font-weight: 700; font-size: 12px; }
+.os-setor { color: var(--texto-fraco); font-size: 12px !important; text-transform: uppercase; letter-spacing: .4px; }
+.os-registro { color: #cfe6d8; }
+.os-chip { font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.os-chip-pendente { color: #9aa1a8; }
+.os-chip-feita { color: #57c48a; }
+.os-chip-nao-conforme { color: #ff7b6b; }
+.os-liberada { display: flex; flex-direction: column; gap: 4px; padding: 8px 10px; border-radius: 6px; background: #1d3327; border: 1px solid #3f9f6b; }
+
+.fabrica-setores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.fabrica-setor { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; padding: 9px 10px; border-left: 4px solid var(--cor-setor, #888); }
+.fabrica-setor span { font-size: 12px; color: var(--texto-fraco); font-weight: 400; }
+.setor-usinagem { --cor-setor: #6cb4ff; }
+.setor-laboratorio { --cor-setor: #57c48a; }
+.setor-soldagem { --cor-setor: #ff8a3d; }
+.setor-manufatura { --cor-setor: #c792ea; }
+
+/* Setor aberto: barra da OS em cima, o setor ocupa o resto. */
+.barra-setor { display: flex; align-items: center; gap: 12px; padding: 8px 14px; background: #171b1f; border-bottom: 3px solid var(--cor-setor, #888); flex-wrap: wrap; }
+.barra-setor-texto { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 240px; }
+.barra-setor-texto span { font-size: 12.5px; color: var(--texto-fraco); }
+.barra-setor-estado { font-size: 13px; color: #ffb3a8; }
+.barra-setor-estado.ok { color: #9fe0c4; }
+.setor-react { flex: 1; min-height: 0; overflow: auto; background: #0f141b; }
+.destaque-os { margin: 0; padding: 8px 10px; border-radius: 6px; background: #2a2416; border: 1px solid #e0b100; font-size: 13px; }
+
+/* Relatório da OS (também para imprimir). */
+.relatorio-os { max-width: 980px; margin: 14px auto; display: flex; flex-direction: column; gap: 10px; }
+.tabela-os { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tabela-os th, .tabela-os td { border: 1px solid var(--borda); padding: 6px 8px; text-align: left; vertical-align: top; }
+.relatorio-os .campo { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.relatorio-os textarea { width: 100%; box-sizing: border-box; }
+.resposta-os p { margin: 2px 0; }
+.nota-os { font-weight: 700; }
+
+@media (max-width: 900px) {
+  .fabrica { grid-template-columns: 1fr; grid-template-rows: 45% 1fr; }
+  .fabrica-painel { border-left: 0; border-top: 1px solid var(--borda); }
+}
+
+@media print {
+  .topo, .navegacao-lateral, .barra-setor, .relatorio-os .acoes { display: none !important; }
+  .relatorio-os { color: #000; background: #fff; border: 0; }
+  .tabela-os th, .tabela-os td { border-color: #999; }
+}
+.jogo-imersivo .barra-setor { padding-right: 240px; }
