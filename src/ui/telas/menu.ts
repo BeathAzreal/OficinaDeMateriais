@@ -8,22 +8,20 @@ import { telaFabrica } from './fabrica'
 import { telaRecordes } from './recordes'
 import { painelTorneio } from './torneio'
 import { telaTreino } from './treino'
-import type { LugarMenu } from '../../render/menu3d'
-import { ligarCliques, mostrarCenario } from '../cenario'
 import '../../menu-grafico.css'
 import { ROTULO_VERSAO } from '../../versao'
 
-/** `lugar`: onde a opção fica no menu 3D (render/menu3d.ts). */
-const MODOS: { titulo: string; descricao: string; lugar: LugarMenu; abrir: (app: App) => void }[] = [
-  { titulo: 'FÁBRICA', lugar: 'fabrica', descricao: 'Novo: ordens de serviço que passam pela usinagem, soldagem e laboratório, como na indústria.', abrir: (app: App) => telaFabrica(app) },
-  { titulo: 'ARCADE', lugar: 'arcade', descricao: 'História, desafios e versus local.', abrir: telaCentralArcade },
-  { titulo: 'TREINO', lugar: 'treino', descricao: 'Sua bancada. Seu ritmo. Experimente e compare.', abrir: telaTreino },
-  { titulo: 'MANUFATURA ADITIVA', lugar: 'manufatura', descricao: 'Experimental: programe o robô em INFORM e fabrique uma parede camada por camada.', abrir: telaEscolhaManufatura },
-  { titulo: 'RECORDES', lugar: 'recordes', descricao: 'Reveja as marcas que você deixou na oficina.', abrir: (app: App) => telaRecordes(app) },
-  { titulo: 'CONFIGURAÇÕES', lugar: 'config', descricao: 'Som, dispositivo, controles e qualidade visual.', abrir: telaConfiguracoes },
+/** Menu chapado (v2.3): lista sobre fundo de cor sólida, sem cenário 3D nem imagem. */
+const MODOS: { titulo: string; descricao: string; abrir: (app: App) => void }[] = [
+  { titulo: 'FÁBRICA', descricao: 'Novo: ordens de serviço que passam pela usinagem, soldagem e laboratório, como na indústria.', abrir: (app: App) => telaFabrica(app) },
+  { titulo: 'ARCADE', descricao: 'História, desafios e versus local.', abrir: telaCentralArcade },
+  { titulo: 'TREINO', descricao: 'Sua bancada. Seu ritmo. Experimente e compare.', abrir: telaTreino },
+  { titulo: 'MANUFATURA ADITIVA', descricao: 'Experimental: programe o robô em INFORM e fabrique uma parede camada por camada.', abrir: telaEscolhaManufatura },
+  { titulo: 'RECORDES', descricao: 'Reveja as marcas que você deixou na oficina.', abrir: (app: App) => telaRecordes(app) },
+  { titulo: 'CONFIGURAÇÕES', descricao: 'Som, dispositivo, controles e qualidade visual.', abrir: telaConfiguracoes },
 ]
 
-/** Opção escolhida por último: ao voltar ao menu, a câmera recua olhando para ela. */
+/** Opção escolhida por último: ao voltar ao menu, ela vem selecionada. */
 let ultimoModo = 0
 
 export function telaMenu(app: App): void {
@@ -49,22 +47,12 @@ export function telaMenu(app: App): void {
         o.connect(g); g.connect(audio.destination); o.start(); o.stop(audio.currentTime + .08)
       } catch { /* Som opcional: navegação continua disponível. */ }
     }
-    let ativo = true
-    // Menu 3D: cada opção é um lugar da fábrica; sem WebGL, fica o menu ilustrado.
-    // O cenário 3D é o mesmo das outras telas: aqui a câmera volta ao centro do galpão.
-    const vista = mostrarCenario(MODOS[ultimoModo].lugar, 0)
-    ligarCliques({
-      aoEscolher: (lugar) => abrir(MODOS.findIndex((m) => m.lugar === lugar)),
-      aoPassar: (lugar) => { const i = MODOS.findIndex((m) => m.lugar === lugar); if (i >= 0) selecionar(i) },
-    })
-    if (vista) app.raiz.classList.add('menu-3d')
     const abrir = (i: number) => {
       if (saindo || i < 0) return
       ultimoModo = i
       saindo = true; som()
       app.raiz.classList.add('menu-saindo')
       botoes[i].classList.add('confirmado')
-      if (vista) { void vista.entrar(MODOS[i].lugar).then(() => { if (ativo) MODOS[i].abrir(app) }); return }
       timer = window.setTimeout(() => MODOS[i].abrir(app), window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 240)
     }
     const botoes = MODOS.map((m, i) => h('button', {
@@ -77,7 +65,6 @@ export function telaMenu(app: App): void {
       selecionado = (i + MODOS.length) % MODOS.length
       botoes.forEach((b, n) => { b.classList.toggle('selecionado', n === selecionado); b.tabIndex = n === selecionado ? 0 : -1 })
       descricao.textContent = MODOS[selecionado].descricao
-      vista?.focar(MODOS[selecionado].lugar, 0)
       if (foco) botoes[selecionado].focus({ preventScroll: true })
     }
     const teclas = (e: KeyboardEvent) => {
@@ -107,12 +94,11 @@ export function telaMenu(app: App): void {
       h('nav', { class: 'grafico-lista', 'aria-label': 'Escolher modo de jogo' }, ...botoes),
       h('div', { class: 'grafico-legenda' }, descricao,
         torneio ? h('button', { class: 'grafico-retomar', type: 'button', on: { click: () => painelTorneio(app, torneio.id) } }, `↗ Retomar ${torneio.config.nome}${vez ? ' · rodada em andamento' : ''}`) : null),
-      h('footer', { class: 'grafico-rodape' }, h('span', {}, 'JOGO DIDÁTICO'), h('span', {}, vista ? '↑ ↓ ESCOLHER    ENTER CONFIRMAR    /    MOUSE: CLIQUE NO LUGAR    /    CONTROLE: A' : '↑ ↓ ESCOLHER    ENTER CONFIRMAR    /    CONTROLE: A')),
+      h('footer', { class: 'grafico-rodape' }, h('span', {}, 'JOGO DIDÁTICO'), h('span', {}, '↑ ↓ ESCOLHER    ENTER CONFIRMAR    /    CONTROLE: A')),
     )
     selecionar(ultimoModo)
     frame = requestAnimationFrame(controle)
     return () => {
-      ativo = false; ligarCliques({}); app.raiz.classList.remove('menu-3d')
       window.removeEventListener('keydown', teclas); clearTimeout(timer); cancelAnimationFrame(frame)
       document.body.classList.remove('menu-grafico'); app.raiz.classList.remove('menu-saindo')
       void audio?.close()
