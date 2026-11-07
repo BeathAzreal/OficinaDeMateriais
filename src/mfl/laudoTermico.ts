@@ -34,6 +34,8 @@ export interface LaudoTermico {
     t85S: number
     meiaLarguraZfMm: number
     larguraZtaMm: number
+    /** Zona fundida mais larga que 4× a espessura: poça atravessando a chapa, fora do que o modelo representa. */
+    foraDaValidade: boolean
   }
 }
 
@@ -78,6 +80,7 @@ export async function calcularLaudo(e: EntradaLaudo): Promise<LaudoTermico> {
       t85S: s.getNumber('t85', 's'),
       meiaLarguraZfMm: s.getNumber('meia_largura_zf', 'mm'),
       larguraZtaMm: s.getNumber('largura_zta', 'mm'),
+      foraDaValidade: s.getNumber('fora_da_validade') === 1,
     },
   }
 }

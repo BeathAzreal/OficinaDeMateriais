@@ -45,6 +45,8 @@ velocidade média do trecho avaliado, espessura e material da chapa, peça a
 (baixo carbono, galvanizado, SAE 1045) têm o laudo completo; nas outras
 chapas aparece só o aporte.
 
+**Validade:** se a zona fundida calculada passa de 4 vezes a espessura (poça atravessando a chapa), o laudo avisa que os números deixaram de valer.
+
 **Modo sombra:** o laudo não muda a nota. Ele serve para comparar com os
 índices qualitativos do jogo antes de decidir se a MFL passa a valer na
 pontuação.

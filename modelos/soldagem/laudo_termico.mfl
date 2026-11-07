@@ -47,3 +47,11 @@ if chapa_fina == 1 {
 
 # Largura da ZTA de cada lado do cordão
 let largura_zta = borda_zta - meia_largura_zf
+
+# 4. Validade (regra do jogo, H111). Zona fundida mais larga que 4 vezes a
+#    espessura quer dizer uma poça que atravessa a chapa e escorre: o campo
+#    de Rosenthal não representa isso, e os números deixam de valer.
+var fora_da_validade = 0
+if 2 * meia_largura_zf > 4 * espessura {
+    fora_da_validade = 1
+}

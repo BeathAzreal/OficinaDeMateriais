@@ -32,6 +32,14 @@ describe('laudo térmico pela MFL', () => {
     expect(l.aco!.larguraZtaMm).toBeCloseTo(3.708824690602919, 6)
   })
 
+  it('avisa quando a zona fundida passa de 4× a espessura (passe lento demais)', async () => {
+    expect((await calcularLaudo(base)).aco!.foraDaValidade).toBe(false)
+    // Medido no jogo (navegador sem GPU): 22 V, 109 A, 0,6 mm/s em chapa de 3 mm, com perfuração prevista.
+    const lento = await calcularLaudo({ ...base, tensaoV: 22, correnteA: 109, velocidadeMms: 0.6, espessuraMm: 3 })
+    expect(2 * lento.aco!.meiaLarguraZfMm).toBeGreaterThan(4 * 3)
+    expect(lento.aco!.foraDaValidade).toBe(true)
+  })
+
   it('chapa grossa escoa em 3-D e esfria mais rápido', async () => {
     const fina = await calcularLaudo(base)
     const grossa = await calcularLaudo({ ...base, espessuraMm: 20 })

@@ -9,3 +9,4 @@
 .laudo-formula figure { margin: 8px 0; }
 .laudo-formula figcaption { font-size: 0.85rem; color: var(--texto-2); }
 .laudo-formula pre { max-height: 40vh; overflow: auto; margin: 4px 0 0; padding: 8px 10px; background: #0d1014; border: 1px solid var(--borda); border-radius: 8px; font-size: 0.82rem; line-height: 1.35; white-space: pre; }
+.laudo-fora { margin: 0 0 8px; padding: 8px 10px; border: 1px solid #c0392b; border-radius: 8px; background: #2a1414; }

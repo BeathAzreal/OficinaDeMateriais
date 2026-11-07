@@ -1273,6 +1273,7 @@ No resultado do MIG/MAG (Treino e Fábrica), o botão **Laudo térmico (MFL)** c
 - **Entradas:** tensão e corrente do último ajuste usado no passe (`tensaoV`, `correnteA` de `src/modelo/processo.ts`), velocidade média do trecho avaliado (`velocidadeMediaMms`), espessura e material da chapa, peça a 20 °C.
 - **Propriedades do aço** (`modelos/materiais/aco.mfl`): k = 30 W/(m·K), ρ = 7850 kg/m³, c = 640 J/(kg·K), médias da faixa de 500 a 800 °C.
 - **Cobertura:** laudo completo só para aço de baixo carbono, galvanizado e SAE 1045. Inox, alumínio e cobre mostram só o aporte (a EN 1011-2 é para aços ferríticos).
+- **Validade (regra do jogo):** se a zona fundida calculada passa de 4 vezes a espessura, o laudo avisa que está fora do que o modelo representa (poça atravessando a chapa). Encontrado num teste real: 22 V, 109 A, 0,6 mm/s em chapa de 3 mm deram zona fundida de 67 mm, enquanto o jogo previa perfuração.
 - **Modo sombra:** não muda a nota nem a aprovação.
 - **Testes:** `tests/laudoTermico.test.ts` reproduz o exemplo de referência da MFL (25 V, 250 A, 5 mm/s, 10 mm: 1 kJ/mm, t8/5 = 11,36 s, ZTA de 3,71 mm) e a fórmula 3-D da EN 1011-2.
 - Modelos analíticos: propriedades constantes, sem perdas, sem chanfro nem metal de adição. Valem para a ZTA, não para a poça.

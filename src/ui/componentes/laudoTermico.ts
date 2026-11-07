@@ -55,6 +55,10 @@ export function montarLaudo(l: LaudoTermico, variosAjustes: boolean): HTMLElemen
   return h('div', { class: 'laudo-termico' },
     h('p', { class: 'nota laudo-aviso' },
       'Em teste: estes números são calculados pela linguagem MFL e não mudam a nota. Compare com o que o jogo mostrou.'),
+    l.aco?.foraDaValidade
+      ? h('p', { class: 'laudo-fora' }, h('strong', {}, 'Fora do que o modelo representa. '),
+          `Com este aporte, a zona fundida passaria de 4 vezes a espessura da chapa: na prática a poça atravessa a chapa e escorre (veja o avesso). Os números abaixo servem só para mostrar que o calor foi demais.`)
+      : null,
     h('ul', { class: 'lista-explicacao laudo-lista' }, itens),
     l.aco ? null : h('p', { class: 'nota' }, `${material.nome}: por enquanto o laudo completo cobre só os aços carbono (a EN 1011-2 é para aços ferríticos). Aqui vai só o aporte.`),
     h('p', { class: 'nota laudo-entradas' },
