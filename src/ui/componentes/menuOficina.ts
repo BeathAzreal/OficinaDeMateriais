@@ -1,6 +1,7 @@
 import type { App } from '../app'
 import { anexar, h } from '../dom'
 import '../../menu-grafico.css'
+import { NOME_JOGO, ROTULO_VERSAO } from '../../versao'
 
 export interface OpcaoOficina {
   nome: string
@@ -63,10 +64,10 @@ export function menuOficina(app: App, titulo: string, caminho: string, opcoes: O
     frame = requestAnimationFrame(controle)
     anexar(app.raiz,
       h('header', { class: 'grafico-titulo' }, h('p', {}, caminho), h('h2', { class: 'tela-titulo', tabindex: '-1' }, titulo)),
-      h('span', { class: 'grafico-versao' }, 'ALPHA / 2.2'),
+      h('span', { class: 'grafico-versao' }, ROTULO_VERSAO),
       h('nav', { class: 'grafico-lista', 'aria-label': titulo }, ...botoes),
       h('div', { class: 'grafico-legenda' }, descricao),
-      h('footer', { class: 'grafico-rodape' }, h('span', {}, 'OFICINA DE SOLDAGEM'), h('span', {}, '↑ ↓ ESCOLHER    ENTER CONFIRMAR    ESC VOLTAR')))
+      h('footer', { class: 'grafico-rodape' }, h('span', {}, NOME_JOGO.toUpperCase()), h('span', {}, '↑ ↓ ESCOLHER    ENTER CONFIRMAR    ESC VOLTAR')))
     selecionar(0)
     return () => {
       clearTimeout(timer)

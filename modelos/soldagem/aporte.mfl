@@ -1,0 +1,18 @@
+# Aporte térmico (heat input) de um passe MIG/MAG — EN 1011-1.
+#
+# Entradas que o jogo passa (com unidade):
+#   tensao      tensão do arco (V)
+#   corrente    corrente (A)
+#   velocidade  velocidade de soldagem (mm/s)
+import welding
+
+# Fator de eficiência térmica do processo: fração da energia do arco que
+# entra na peça (EN 1011-1, Tabela 1: MIG/MAG = 0,8).
+let eficiencia = welding.efficiency("MAG")
+
+# Q = k · U · I / v
+let aporte = welding.heat_input(voltage: tensao, current: corrente, speed: velocidade,
+                                efficiency: eficiencia)
+
+# Potência que entra na peça: q = k · U · I
+let potencia = eficiencia * tensao * corrente

@@ -25,6 +25,7 @@ import { telaTorno } from './torno'
 import { PECAS_BRASAGEM, pecaBrasagemEm } from '../../missoes/pecasBrasagem'
 import { LIGAS } from '../../modelo/brasagem'
 import { telaTreinoBrasagem } from './treinoBrasagem'
+import { botaoLaudo } from '../componentes/laudoTermico'
 
 /**
  * Treino: bancada livre (sandbox) por processo e peça, sem ranking nem registro
@@ -200,6 +201,7 @@ function resultadoTreino(app: App, s: SessaoTreino, config: ConfiguracaoTentativ
         'div',
         { class: 'acoes' },
         tentativa ? botaoExplicacao(tentativa, s.anterior) : null,
+        botaoLaudo(config.contexto, tentativa, config.ajustes),
         h('button', { type: 'button', on: { click: () => telaTreino(app) } }, 'Outros treinos'),
         h('button', { type: 'button', class: 'primario', on: { click: () => bancadaTreino(app, { ...s, inicial: config, anterior: tentativa ?? s.anterior }) } }, 'Treinar de novo'),
       ),

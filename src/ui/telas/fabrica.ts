@@ -1,4 +1,6 @@
 import { createElement } from 'react'
+import { botaoLaudo } from '../componentes/laudoTermico'
+import { tentativaDoRegistro } from '../componentes/explicacao'
 import cssUsinagem from '../../setores/usinagem/ui/estilo.css?inline'
 import cssLaboratorio from '../../setores/laboratorio/ui/estilo.css?inline'
 import { App as AppUsinagem } from '../../setores/usinagem/ui/App'
@@ -282,6 +284,7 @@ function resultadoSoldagem(app: App, ordem: OrdemServico, etapa: Etapa, t: Tenta
       titulo(oficial ? 'Emenda concluída' : 'Treino concluído', oficial ? 'Entregue esta solda para a OS ou faça outra tentativa (fica o melhor resultado).' : 'Treino: não entra na OS.'),
       h('div', { class: 'grade-resultado' }, montarPontuacao(t.resultado, { animar: true, rotulo: oficial ? `${ordem.codigo} · EMENDA` : 'TREINO — NÃO CONTA' }), inspecao.elemento),
       h('div', { class: 'acoes' },
+        botaoLaudo(t.config.contexto, tentativaDoRegistro(t.config.contexto, t.eventos), t.config.ajustes),
         h('button', { type: 'button', on: { click: () => telaSoldagemOs(app, ordem, etapa, t.config) } }, 'Nova tentativa'),
         oficial ? h('button', { type: 'button', class: 'primario', on: { click: registrarNaOs } }, `Entregar para a ${ordem.codigo}`) : null),
     )

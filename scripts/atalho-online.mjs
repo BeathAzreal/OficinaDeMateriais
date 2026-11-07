@@ -15,7 +15,7 @@ export function gravarAtalhoOnline(pasta){
 <h1>Oficina de Solda online</h1>
 <p>Abrindo a oficina no navegador. É necessário ter conexão com a internet.</p>
 <a href="${endereco}">Abrir o jogo online</a>
-<p>Este atalho não inicia Node.js nem servidor neste computador. Para treinar sem internet, abra <strong>Oficina de Soldagem.html</strong> na pasta principal do pacote.</p>
+<p>Este atalho não inicia Node.js nem servidor neste computador. Para treinar sem internet, abra <strong>Oficina de Materiais.html</strong> na pasta principal do pacote.</p>
 </html>
 `,'utf8')
 }

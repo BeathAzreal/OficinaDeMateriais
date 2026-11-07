@@ -1,9 +1,9 @@
 {
-  "name": "soldagem-mig-didatico",
+  "name": "oficina-de-materiais",
   "private": true,
-  "version": "2.2.0",
+  "version": "2.3.0-dev",
   "type": "module",
-  "description": "Protótipo didático de soldagem MIG/MAG (modelo qualitativo simplificado)",
+  "description": "Oficina de Materiais: fábrica didática (soldagem, usinagem, laboratório de falhas) com as fórmulas em MFL",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -16,7 +16,7 @@
     "pacote:rede": "npm run build && npm run build:servidor && node scripts/pacote-rede.mjs",
     "build:hospedado": "npm run portatil && node scripts/hospedado.mjs",
     "preview:hospedado": "node scripts/preview-hospedado.mjs",
-    "pacote:v2": "npm run portatil && npm run build:servidor && node scripts/pacote-rede.mjs && node scripts/pacote-v22.mjs"
+    "pacote:v2": "npm run portatil && npm run build:servidor && node scripts/pacote-rede.mjs && node scripts/pacote-v23.mjs"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",
@@ -28,6 +28,7 @@
     "vitest": "^5.0.5"
   },
   "dependencies": {
+    "mfl-wasm": "file:vendor/mfl-wasm",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "three": "^0.186.1"
