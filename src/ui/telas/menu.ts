@@ -11,6 +11,7 @@ import { telaTreino } from './treino'
 import type { LugarMenu } from '../../render/menu3d'
 import { ligarCliques, mostrarCenario } from '../cenario'
 import '../../menu-grafico.css'
+import { ROTULO_VERSAO } from '../../versao'
 
 /** `lugar`: onde a opção fica no menu 3D (render/menu3d.ts). */
 const MODOS: { titulo: string; descricao: string; lugar: LugarMenu; abrir: (app: App) => void }[] = [
@@ -101,8 +102,8 @@ export function telaMenu(app: App): void {
     const torneio = app.torneios.filter(t => t.status === 'em-andamento').sort((a,b) => b.criadoEm.localeCompare(a.criadoEm))[0]
     const vez = torneio ? vezAtual(app.baseDoTorneio(torneio.id)) : null
     anexar(app.raiz,
-      h('header', { class: 'grafico-titulo' }, h('h2', { class: 'tela-titulo', tabindex: '-1' }, 'OFICINA DE', h('br'), h('strong', {}, 'SOLDAGEM'))),
-      h('span', { class: 'grafico-versao' }, 'ALPHA / 2.2'),
+      h('header', { class: 'grafico-titulo' }, h('h2', { class: 'tela-titulo', tabindex: '-1' }, 'OFICINA DE', h('br'), h('strong', {}, 'MATERIAIS'))),
+      h('span', { class: 'grafico-versao' }, ROTULO_VERSAO),
       h('nav', { class: 'grafico-lista', 'aria-label': 'Escolher modo de jogo' }, ...botoes),
       h('div', { class: 'grafico-legenda' }, descricao,
         torneio ? h('button', { class: 'grafico-retomar', type: 'button', on: { click: () => painelTorneio(app, torneio.id) } }, `↗ Retomar ${torneio.config.nome}${vez ? ' · rodada em andamento' : ''}`) : null),

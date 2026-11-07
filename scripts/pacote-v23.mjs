@@ -4,13 +4,13 @@ import {spawnSync} from 'node:child_process'
 import {gravarAtalhoOnline} from './atalho-online.mjs'
 import {OFICINA_ONLINE} from '../src/rede/convite.ts'
 
-const projeto=process.cwd(),raiz=resolve('pacote-v22'),saida=join(raiz,'Oficina-de-Soldagem-v2.2')
-const portatil=resolve('portatil/Oficina de Soldagem v2.2')
-const rede=resolve('pacote-rede/Oficina-de-Soldagem-v2.2-Rede')
-const zip=resolve('Oficina-de-Soldagem-Alpha-v2.2.zip')
+const projeto=process.cwd(),raiz=resolve('pacote-v22'),saida=join(raiz,'Oficina-de-Materiais-v2.3')
+const portatil=resolve('portatil/Oficina de Materiais v2.3')
+const rede=resolve('pacote-rede/Oficina-de-Materiais-v2.3-Rede')
+const zip=resolve('Oficina-de-Materiais-Alpha-v2.3.zip')
 if(process.platform!=='win32')throw Error('A geração deste ZIP Windows x64 usa a biblioteca ZIP do Windows.')
 if(dirname(saida)!==raiz||!saida.startsWith(resolve(projeto)+sep))throw Error('Destino do pacote fora do projeto.')
-for(const arquivo of[join(portatil,'Oficina de Soldagem.html'),join(rede,'runtime/node.exe'),join(rede,'servidor/index.js')]){
+for(const arquivo of[join(portatil,'Oficina de Materiais.html'),join(rede,'runtime/node.exe'),join(rede,'servidor/index.js')]){
  if(!existsSync(arquivo))throw Error('Gere primeiro o portátil e o pacote de rede: falta '+arquivo)
 }
 if(existsSync(saida))rmSync(saida,{recursive:true,force:true})
@@ -19,7 +19,7 @@ cpSync(portatil,saida,{recursive:true})
 cpSync(rede,join(saida,'servidor-local'),{recursive:true})
 gravarAtalhoOnline(saida)
 writeFileSync(join(saida,'NOTAS DA VERSAO.txt'),readFileSync(join(portatil,'LEIA-ME.txt')))
-writeFileSync(join(saida,'LEIA-ME.txt'),`OFICINA DE SOLDAGEM — ALPHA v2.2
+writeFileSync(join(saida,'LEIA-ME.txt'),`OFICINA DE MATERIAIS — ALPHA v2.3
 
 Extraia a pasta inteira antes de abrir qualquer arquivo.
 
@@ -29,7 +29,7 @@ Não precisa iniciar Node.js, .bat ou servidor no PC. Precisa de internet.
 Crie uma sala e compartilhe o convite. O x1 online é para duas pessoas em MIG/MAG.
 
 2. TREINAR OFFLINE
-Abra Oficina de Soldagem.html no Chrome ou Edge. Abrir o jogo.bat também abre esse HTML.
+Abra Oficina de Materiais.html no Chrome ou Edge. Abrir o jogo.bat também abre esse HTML.
 Funciona sem internet e sem servidor. Os recordes ficam no navegador, não na pasta.
 Antes de trocar de pasta ou navegador, exporte os recordes que quiser preservar.
 
