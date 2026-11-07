@@ -25,13 +25,13 @@ jobs:
         run: npm run typecheck
       - name: Testes
         run: npm test
-      - name: HTML portátil
-        run: npm run portatil
+      - name: HTML portátil e ZIP de teste
+        run: npm run pacote:teste
       - name: Tamanho
         run: node scripts/tamanho.mjs >> "$GITHUB_STEP_SUMMARY"
-      - name: Publicar o HTML portátil
+      - name: Publicar o ZIP de teste
         uses: actions/upload-artifact@v4
         with:
-          name: oficina-de-materiais-portatil
-          path: portatil/
+          name: oficina-de-materiais-teste
+          path: download/Oficina-de-Materiais-teste.zip
           if-no-files-found: error
