@@ -186,6 +186,11 @@ function abrirSetor(app: App, setor: SetorId, etapa: Etapa | null): void {
   telaTreino(app)
 }
 
+/** Torno CNC da versão anterior em acesso livre (Treino → Usinagem). */
+export function abrirCncLivre(app: App): void {
+  telaSetorReact(app, 'usinagem', ordemAtiva(app), null)
+}
+
 function barraSetor(app: App, setor: SetorId, ordem: OrdemServico, etapa: Etapa | null, extra?: HTMLElement): HTMLElement {
   return h('div', { class: `barra-setor setor-${setor}` },
     h('button', { type: 'button', on: { click: () => telaFabrica(app, setor) } }, '← Voltar à fábrica'),

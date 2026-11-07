@@ -3,7 +3,6 @@ import type { App } from '../app'
 import { anexar, h } from '../dom'
 import { telaCentralArcade } from './centralArcade'
 import { telaConfiguracoes } from './configuracoes'
-import { telaEscolhaManufatura } from './manufatura'
 import { telaFabrica } from './fabrica'
 import { telaRecordes } from './recordes'
 import { painelTorneio } from './torneio'
@@ -14,9 +13,8 @@ import { ROTULO_VERSAO } from '../../versao'
 /** Menu chapado (v2.3): lista sobre fundo de cor sólida, sem cenário 3D nem imagem. */
 const MODOS: { titulo: string; descricao: string; abrir: (app: App) => void }[] = [
   { titulo: 'FÁBRICA', descricao: 'Novo: ordens de serviço que passam pela usinagem, soldagem e laboratório, como na indústria.', abrir: (app: App) => telaFabrica(app) },
+  { titulo: 'TREINO', descricao: 'Soldagem, usinagem, laboratório e manufatura aditiva, numa tela só. Nada entra no ranking.', abrir: telaTreino },
   { titulo: 'ARCADE', descricao: 'História, desafios e versus local.', abrir: telaCentralArcade },
-  { titulo: 'TREINO', descricao: 'Sua bancada. Seu ritmo. Experimente e compare.', abrir: telaTreino },
-  { titulo: 'MANUFATURA ADITIVA', descricao: 'Experimental: programe o robô em INFORM e fabrique uma parede camada por camada.', abrir: telaEscolhaManufatura },
   { titulo: 'RECORDES', descricao: 'Reveja as marcas que você deixou na oficina.', abrir: (app: App) => telaRecordes(app) },
   { titulo: 'CONFIGURAÇÕES', descricao: 'Som, dispositivo, controles e qualidade visual.', abrir: telaConfiguracoes },
 ]
