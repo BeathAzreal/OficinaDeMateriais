@@ -16,7 +16,8 @@
     "pacote:rede": "npm run build && npm run build:servidor && node scripts/pacote-rede.mjs",
     "build:hospedado": "npm run portatil && node scripts/hospedado.mjs",
     "preview:hospedado": "node scripts/preview-hospedado.mjs",
-    "pacote:v2": "npm run portatil && npm run build:servidor && node scripts/pacote-rede.mjs && node scripts/pacote-v23.mjs"
+    "pacote:v2": "npm run portatil && npm run build:servidor && node scripts/pacote-rede.mjs && node scripts/pacote-v23.mjs",
+    "pacote:teste": "npm run portatil && node scripts/pacote-teste.mjs"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",
