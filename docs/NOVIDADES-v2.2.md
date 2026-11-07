@@ -1,4 +1,6 @@
-# Oficina de Soldagem — Alpha v2.2 (versão de teste)
+# Novidades da v2.2 (Oficina de Soldagem)
+
+> Texto do README da v2.2 no repositório SoldamatGamification, guardado como histórico. Os links para outras versões apontam para aquele repositório.
 
 > ⚠️ **A v2.2 não é estável e serve apenas para testar funções novas.** Para jogar, use a [Alpha v2.0](../v2.0/Oficina-de-Soldagem-Alpha-v2.0.zip).
 
